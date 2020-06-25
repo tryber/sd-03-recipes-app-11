@@ -1,12 +1,14 @@
 import React from 'react';
-import './App.css';
 import Login from './components/Login';
+import './styles/loginStyles.css';
 
 function App() {
   return (
-    <div id="meals">
-      <Login />
-    </div>
+    <center>
+      <div className="Login">
+        <Login />
+      </div>
+    </center>
   );
 }
 
