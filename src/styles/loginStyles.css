@@ -6,14 +6,12 @@
 }
 
 .Container {
-  font-family: 'Times New Roman', 'Times', serif;
   font-size: 20pt;
   font-style: italic;
   padding: 10px 0 70px;
 }
 
 .Input-Login {
-  font-family: 'Times New Roman', 'Times', serif;
   font-size: 16pt;
   font-style: italic;
   height: 30px;
@@ -25,7 +23,6 @@
 .Button-Login {
   background-color: #6ce34f;
   border-color: #6ce34f;
-  font-family: 'Times New Roman', 'Times', serif;
   font-size: 20pt;
   font-style: italic;
   height: 60px;
