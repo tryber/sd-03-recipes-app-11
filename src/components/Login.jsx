@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -29,12 +30,14 @@ function Login() {
         data-testid="password-input"
         placeholder="Senha"
       />
-      <button
-        type="submit"
-        data-testid="login-submit-btn"
-        disabled={!validateEmailPassword()}
-        onClick={setLocalStorage}
-      >Entrar</button>
+      <Link to="/comidas">
+        <button
+          type="submit"
+          data-testid="login-submit-btn"
+          disabled={!validateEmailPassword()}
+          onClick={setLocalStorage}
+        >Entrar</button>
+      </Link>
     </div>
   );
 }
