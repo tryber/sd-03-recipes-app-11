@@ -4,15 +4,14 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const validateEmailPassword = () => {
-    const re = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[A-Za-z]+$/;
-    return password.length > 6 && re.test(email);
-  };
+  const validateEmailPassword = () => (
+    password.length > 6 && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[A-Za-z]+$/.test(email)
+  );
 
   const setLocalStorage = () => {
+    const emailStringify = JSON.stringify({ email });
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
-    const emailStringify = JSON.stringify({ email });
     localStorage.setItem('user', emailStringify);
   };
 
