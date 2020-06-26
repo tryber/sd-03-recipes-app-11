@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
-import HeaderContext from '../context/HeaderContext';
+import ComidasContext from '../context/ComidasContext';
 
-
-function Header() {
-  const title = useContext(HeaderContext);
+function Header({ title, search }) {
+  const { toggleSearch } = useContext(ComidasContext);
   return (
     <header className="Header">
       <img
@@ -14,14 +14,22 @@ function Header() {
         alt="profile button"
         className="Perfil-Icon"
       />
-      <h3 data-testid="page-title">Comidas</h3>
-      <img
-        src={searchIcon}
-        alt="search icon"
+      <h2 data-testid="page-title">{title}</h2>
+      {search && <button
+        onClick={toggleSearch}
+        data-testid="search-top-btn"
         className="Search-Icon"
-      />
-    </header>
+      >
+        <img src={searchIcon} alt="search icon" />
+      </button>}
+    </header >
   );
 }
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  search: PropTypes.bool.isRequired,
+
+};
 
 export default Header;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Comidas from './components/Comidas';
+import ComidasProvider from './context/ComidasProvider';
 
 import './styles/styles.css';
 
@@ -11,7 +12,9 @@ function App() {
       <div className="Container" id="meals">
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route path="/comidas" component={Comidas} />
+          <ComidasProvider>
+            <Route path="/comidas" component={Comidas} />
+          </ComidasProvider>
           <Route path="/bebidas" />
           <Route path="/comidas/:id" />
           <Route path="/bebidas/:id" />
