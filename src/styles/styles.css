@@ -30,7 +30,7 @@
   width: 90%;
 }
 
-.Header{
+.Header {
   align-items: center;
   background-color: #c4c4c4;
   display: flex;
@@ -39,31 +39,30 @@
   max-height: 65px;
 }
 
-.Perfil-Icon{
+.Perfil-Icon {
   padding-left: 15px;
 }
 
-.Search-Icon{
+.Search-Icon {
   background-color: #c4c4c4;
-  outline: none;
   border: none;
   padding-right: 15px;
 }
 
-.Search-Icon:focus{
+.Search-Icon:focus {
   background-color: #c4c4c4;
-  outline: none;
   border: none;
+  outline: none;
   padding-right: 15px;
 }
 
-.Input-Search{
+.Input-Search {
   font-size: 14pt;
   height: 30px;
   width: 90%;
 }
 
-.Radio{
+.Radio {
   display: flex;
   font-size: 14pt;
   justify-content: space-around;
