@@ -40,7 +40,16 @@
 }
 
 .Perfil-Icon {
+  background-color: #c4c4c4;
+  border: none;
   padding-left: 15px;
+}
+
+.Perfil-Icon:focus {
+  background-color: #c4c4c4;
+  border: none;
+  outline: none;
+  padding-right: 15px;
 }
 
 .Search-Icon {

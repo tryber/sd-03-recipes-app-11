@@ -9,13 +9,13 @@ function Header({ title, search }) {
   const history = useHistory();
   const { toggleSearch } = useContext(ComidasContext);
   return (
-    <header>
-      <h2 data-testid="page-title">{title}</h2>
-      <button onClick={() => history.push('/perfil')} >
+    <header className="Header">
+      <button onClick={() => history.push('/perfil')} className="Perfil-Icon">
         <img data-testid="profile-top-btn" src={profileIcon} alt="Icone do Profile" />
       </button>
+      <h2 data-testid="page-title">{title}</h2>
       {search && (
-        <button onClick={toggleSearch} >
+        <button onClick={toggleSearch} className="Search-Icon">
           <img
             data-testid="search-top-btn"
             src={searchIcon} alt="search icon"
