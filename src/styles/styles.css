@@ -44,11 +44,34 @@
 }
 
 .Search-Icon{
+  background-color: #c4c4c4;
+  outline: none;
+  border: none;
+  padding-right: 15px;
+}
+
+.Search-Icon:focus{
+  background-color: #c4c4c4;
+  outline: none;
+  border: none;
   padding-right: 15px;
 }
 
 .Input-Search{
-  font-size: 12pt;
+  font-size: 14pt;
   height: 30px;
   width: 90%;
+}
+
+.Radio{
+  display: flex;
+  font-size: 14pt;
+  justify-content: space-around;
+}
+
+.Footer {
+  background-color: #c4c4c4;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
 }
