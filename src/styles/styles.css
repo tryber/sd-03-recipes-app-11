@@ -29,3 +29,26 @@
   margin: 60px 0 150px;
   width: 90%;
 }
+
+.Header{
+  align-items: center;
+  background-color: #c4c4c4;
+  display: flex;
+  font-size: 16pt;
+  justify-content: space-between;
+  max-height: 65px;
+}
+
+.Perfil-Icon{
+  padding-left: 15px;
+}
+
+.Search-Icon{
+  padding-right: 15px;
+}
+
+.Input-Search{
+  font-size: 12pt;
+  height: 30px;
+  width: 90%;
+}

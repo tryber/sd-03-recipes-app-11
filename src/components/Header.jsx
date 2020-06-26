@@ -7,16 +7,18 @@ import HeaderContext from '../context/HeaderContext';
 function Header() {
   const title = useContext(HeaderContext);
   return (
-    <header>
+    <header className="Header">
       <img
         src={profileIcon}
         data-testid="profile-top-btn"
         alt="profile button"
+        className="Perfil-Icon"
       />
-      <h2 data-testid="page-title">{title}</h2>
+      <h3 data-testid="page-title">Comidas</h3>
       <img
         src={searchIcon}
         alt="search icon"
+        className="Search-Icon"
       />
     </header>
   );
