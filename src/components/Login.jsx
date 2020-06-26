@@ -6,7 +6,7 @@ function Login() {
   const [password, setPassword] = useState('');
 
   const validateEmailPassword = () => (
-    password.length > 6 && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[A-Za-z]+$/.test(email)
+    password.length > 6 && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)
   );
 
   const setLocalStorage = () => {
@@ -15,7 +15,6 @@ function Login() {
     localStorage.setItem('cocktailsToken', 1);
     localStorage.setItem('user', emailStringify);
   };
-
 
   return (
     <div>
