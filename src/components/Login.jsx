@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -17,8 +18,8 @@ function Login() {
 
   return (
     <div>
-      <div className="Container">
-        <h2 className="Title-Login">Login</h2>
+      <div className="Title-Login">
+        <h2>Login</h2>
       </div>
       <input
         onChange={(event) => setEmail(event.target.value)}
@@ -34,15 +35,15 @@ function Login() {
         className="Input-Login"
         type="password"
       /><br />
-      <button
-        type="submit"
-        data-testid="login-submit-btn"
-        disabled={!validateEmailPassword()}
-        onClick={setLocalStorage}
-        className="Button-Login"
-      >
-        Entrar
-      </button>
+      <Link to="/comidas">
+        <button
+          type="submit"
+          data-testid="login-submit-btn"
+          disabled={!validateEmailPassword()}
+          onClick={setLocalStorage}
+          className="Button-Login"
+        >Entrar</button>
+      </Link>
     </div>
   );
 }

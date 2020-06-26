@@ -1,11 +1,11 @@
-.Login {
+.Container {
   box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.5);
   margin-top: 150px;
   max-height: 800px;
   max-width: 450px;
 }
 
-.Container {
+.Title-Login {
   font-size: 20pt;
   font-style: italic;
   padding: 10px 0 70px;
