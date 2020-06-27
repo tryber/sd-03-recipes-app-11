@@ -5,7 +5,7 @@ import mealIcon from '../images/mealIcon.svg';
 
 function Footer() {
   return (
-    <footer>
+    <footer className="Footer">
       <img src={drinkIcon} alt="drink icon" />
       <img src={exploreIcon} alt="explore icon" />
       <img src={mealIcon} alt="meal icon" />

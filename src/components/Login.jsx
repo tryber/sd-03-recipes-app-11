@@ -18,23 +18,30 @@ function Login() {
 
   return (
     <div>
-      <h2>Login</h2>
+      <div className="Title-Login">
+        <h2>Login</h2>
+      </div>
       <input
         onChange={(event) => setEmail(event.target.value)}
         data-testid="email-input"
         placeholder="Email"
+        className="Input-Login"
+        type="email"
       />
       <input
         onChange={(event) => setPassword(event.target.value)}
         data-testid="password-input"
         placeholder="Senha"
-      />
+        className="Input-Login"
+        type="password"
+      /><br />
       <Link to="/comidas">
         <button
           type="submit"
           data-testid="login-submit-btn"
           disabled={!validateEmailPassword()}
           onClick={setLocalStorage}
+          className="Button-Login"
         >Entrar</button>
       </Link>
     </div>
