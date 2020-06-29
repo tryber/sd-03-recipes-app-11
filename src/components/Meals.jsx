@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import { searchMealsByName } from '../services/requestMealApi';
 import PropTypes from 'prop-types';
+import { searchMealsByName } from '../services/requestMealApi';
 import Header from './Header';
 import Footer from './Footer';
 import SearchBar from './SearchBar';

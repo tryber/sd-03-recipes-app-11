@@ -6,9 +6,9 @@ import mealIcon from '../images/mealIcon.svg';
 
 function Footer() {
   return (
-    <footer data-testid="footer">
+    <footer className="Footer" data-testid="footer">
       <Link to="/bebidas">
-        <button>
+        <button className="Icon">
           <img
             data-testid="drinks-bottom-btn"
             src={drinkIcon} alt="drink icon"
@@ -16,7 +16,7 @@ function Footer() {
         </button>
       </Link>
       <Link to="/explorar">
-        <button>
+        <button className="Icon">
           <img
             data-testid="explore-bottom-btn"
             src={exploreIcon} alt="explore icon"
@@ -24,7 +24,7 @@ function Footer() {
         </button>
       </Link>
       <Link to="/comidas">
-        <button>
+        <button className="Icon">
           <img
             data-testid="food-bottom-btn"
             src={mealIcon} alt="meal icon"
