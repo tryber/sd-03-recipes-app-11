@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Login from './components/Login';
-import Comidas from './components/Comidas';
+import Meals from './components/Meals';
 import ComidasProvider from './context/ComidasProvider';
 
 import './styles/styles.css';
@@ -13,8 +13,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           <ComidasProvider>
-            <Route path="/comidas" component={Comidas} />
-            <Route path="/bebidas" />
+            <Route path="/comidas" render={(props) => <Meals {...props} type="meal" />} />
+            <Route path="/bebidas" render={(props) => <Meals {...props} type="cocktail" />} />
             <Route path="/comidas/:id" />
             <Route path="/bebidas/:id" />
             <Route path="/comidas/:id/in-progress" />
