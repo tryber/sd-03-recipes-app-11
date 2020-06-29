@@ -16,7 +16,11 @@ function App() {
           <ComidasProvider>
             <Route exact path="/comidas" render={(props) => <Meals {...props} type="meal" />} />
             <Route exact path="/bebidas" render={(props) => <Meals {...props} type="cocktail" />} />
-            <Route exact path="/comidas/:id" render={(props) => <RecipeDetails {...props} type="meal" />} />
+            <Route
+              exact
+              path="/comidas/:id"
+              render={(props) => <RecipeDetails {...props} type="meal" />}
+            />
             <Route exact path="/bebidas/:id" />
             <Route exact path="/comidas/:id/in-progress" />
             <Route exact path="/bebidas/:id/in-progress" />
