@@ -83,3 +83,13 @@
   justify-content: space-between;
   padding: 5px 10px;
 }
+
+img {
+  height: 60px;
+  width: 60px;
+}
+
+.map {
+  align-content: space-between;
+  display: flex;
+}
