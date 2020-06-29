@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
-import Footer from './Footer';
 import SearchBar from './SearchBar';
 import ComidasContext from '../context/ComidasContext';
+import Footer from './Footer';
 
-function Comidas(props) {
+function Bebidas(props) {
   const { searchValue } = useContext(ComidasContext);
 
   const { id } = props.match.params;
-
+  console.log(props);
   return (
     <div>
       {!id && <Header search />}
@@ -19,7 +19,7 @@ function Comidas(props) {
   );
 }
 
-Comidas.propTypes = {
+Bebidas.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
@@ -27,7 +27,7 @@ Comidas.propTypes = {
   }),
 };
 
-Comidas.defaultProps = {
+Bebidas.defaultProps = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
@@ -35,4 +35,4 @@ Comidas.defaultProps = {
   }),
 };
 
-export default Comidas;
+export default Bebidas;
