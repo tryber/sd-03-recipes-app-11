@@ -20,7 +20,11 @@ const RecipeDetails = ({ type, match: { params: { id } } }) => {
 
 RecipeDetails.propTypes = {
   type: PropTypes.string.isRequired,
-  match: PropTypes.object.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default RecipeDetails;
