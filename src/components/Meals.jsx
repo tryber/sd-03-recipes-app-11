@@ -8,6 +8,7 @@ import MealsCard from './MealsCard';
 import Loading from './Loading';
 import ComidasContext from '../context/ComidasContext';
 import '../styles/styles.css';
+import MealsCategorys from './MealsCategorys';
 
 function Meals({ type, match }) {
   const { searchValue, meals, setMeals, isFetching, setIsFetching } = useContext(ComidasContext);
@@ -16,7 +17,7 @@ function Meals({ type, match }) {
       setMeals((data.meals || data.drinks).slice(0, 12));
       setIsFetching(false);
     });
-  }, [type]);
+  }, [setMeals, setIsFetching, type]);
 
   const upperCase = {
     meal: 'Meal',
@@ -29,6 +30,9 @@ function Meals({ type, match }) {
     <div>
       {!id && <Header search />}
       {searchValue && <SearchBar />}
+      <div>
+        <MealsCategorys type={type} />
+      </div>
       <div className="Map">
         {meals.map((meal, index) => (
           <MealsCard key={meal[`id${upperCase[type]}`]} recipe={meal} index={index} type={type} />

@@ -9,7 +9,7 @@ function Ingredients({ value: { ingredients } }) {
         key={el[0]}
         data-testid={`${index}-ingredient-name-and-measure`}
       >
-        {`${el[0]} - ${el[1] !== undefined && el[1]}`}
+        {`${el[0]} - ${el[1] || 'a gosto'}`}
       </p>));
 }
 
