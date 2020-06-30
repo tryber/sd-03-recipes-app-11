@@ -7,7 +7,7 @@ import { filterIngredientsMeals, auxiliarFuncition } from '../services/filterIng
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
-import Ingredients from './Ingredients';
+import Ingredients from '../components/Ingredients';
 
 const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   const { recipe, setRecipe, fetchRecipe, setFetchRecipe } = useContext(ComidasContext);
@@ -22,24 +22,23 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   return (
     <div>
       <img
-        width="50"
-        height="50" 
         data-testid="recipe-photo"
-        src={recipe.strMealThumb} 
-        alt={`${recipe.strMeal}`} />
-      <button data-testid="favorite-btn" className="Icon">
+        src={recipe.strMealThumb}
+        alt={`${recipe.strMeal}`}
+      />
+      <button data-testid="share-btn" className="Icon">
         <img
           src={shareIcon}
           alt="share button"
         />
       </button>
       <button
-        data-testid="share-btn" 
+        data-testid="share-btn"
         onClick={() => setFetchRecipe(!fetchRecipe)}
         className="Icon"
       >
-        {fetchRecipe ? <img src={blackHeartIcon} alt="favButton"/>
-          : <img src={whiteHeartIcon} alt="favButton"/> }
+        {fetchRecipe ? <img src={blackHeartIcon} alt="favButton" />
+          : <img src={whiteHeartIcon} alt="favButton" /> }
       </button>
       <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
       <h5 data-testid="recipe-category">{recipe.strCategory}</h5>

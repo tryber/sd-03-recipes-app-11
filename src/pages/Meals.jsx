@@ -1,14 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { searchMealsByName } from '../services/requestMealApi';
-import Header from './Header';
-import Footer from './Footer';
-import SearchBar from './SearchBar';
-import MealsCard from './MealsCard';
-import Loading from './Loading';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import SearchBar from '../components/SearchBar';
+import MealsCard from '../components/MealsCard';
+import Loading from '../components/Loading';
 import ComidasContext from '../context/ComidasContext';
 import '../styles/styles.css';
-import MealsCategorys from './MealsCategorys';
+import MealsCategorys from '../components/MealsCategorys';
 
 function Meals({ type, match }) {
   const { searchValue, meals, setMeals, isFetching, setIsFetching } = useContext(ComidasContext);

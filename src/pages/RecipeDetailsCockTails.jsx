@@ -4,7 +4,10 @@ import ReactPlayer from 'react-player';
 import { lookupFullCocktailDetailsById } from '../services/requestCocktailApi';
 import { filterIngredientsCockTails, auxiliarFuncition } from '../services/filterIngredients';
 import ComidasContext from '../context/ComidasContext';
-import Ingredients from './Ingredients';
+import Ingredients from '../components/Ingredients';
+import shareIcon from '../images/shareIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
   const { recipe, setRecipe, fetchRecipe, setFetchRecipe } = useContext(ComidasContext);
@@ -14,20 +17,29 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
         const allIngredients = filterIngredientsCockTails({ ...data.drinks[0] });
         const filteredAllIngredients = auxiliarFuncition(allIngredients);
         setRecipe({ ...data.drinks[0], ingredients: filteredAllIngredients });
-        setFetchRecipe(true);
       });
   }, []);
   return (
     <div>
       <img
-        width="50"
-        height="50"
         data-testid="recipe-photo"
         src={recipe.strDrinkThumb}
         alt={`${recipe.strDrink}`}
       />
-      <button data-testid="share-btn" >Fav</button>
-      <button data-testid="favorite-btn" >Share</button>
+      <button data-testid="share-btn" className="Icon">
+        <img
+          src={shareIcon}
+          alt="share button"
+        />
+      </button>
+      <button
+        data-testid="favorite-btn"
+        onClick={() => setFetchRecipe(!fetchRecipe)}
+        className="Icon"
+      >
+        {fetchRecipe ? <img src={blackHeartIcon} alt="favButton" />
+          : <img src={whiteHeartIcon} alt="favButton" /> }
+      </button>
       <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
       <h5 data-testid="recipe-category">{recipe.strCategory}</h5>
       {fetchRecipe && <Ingredients value={recipe} />}
