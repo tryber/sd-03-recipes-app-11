@@ -2,18 +2,17 @@ import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import ComidasContext from '../context/ComidasContext';
-import { filterIngredientsMeals }  from '../services/filterIngredients';
+import { filterIngredientsMeals } from '../services/filterIngredients';
 
 const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   const { recipe, setRecipe } = useContext(ComidasContext);
-  const allIngredients = filterIngredientsMeals(recipe)
+  const allIngredients = filterIngredientsMeals(recipe);
   useEffect(() => {
     lookupFullMealDetailsById(id, type)
       .then((data) => {
         setRecipe({ ...data.meals[0] });
       });
   }, []);
-  console.log(recipe.strYoutube)
   return (
     <div>
       <img data-testid="recipe-photo" src={recipe.strMealThumb} alt={`${recipe.strMeal}`} />
@@ -38,8 +37,7 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
           frameBorder="0"
           allow="autoplay;encrypted-media"
           allowFullScreen
-        >
-        </iframe>
+        />
       </div>
     </div>
   );

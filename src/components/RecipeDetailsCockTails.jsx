@@ -2,11 +2,11 @@ import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { lookupFullCocktailDetailsById } from '../services/requestCocktailApi';
 import ComidasContext from '../context/ComidasContext';
-import { filterIngredientsCockTails }  from '../services/filterIngredients';
+import { filterIngredientsCockTails } from '../services/filterIngredients';
 
 const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
   const { recipe, setRecipe } = useContext(ComidasContext);
-  const allIngredients = filterIngredientsCockTails(recipe)
+  const allIngredients = filterIngredientsCockTails(recipe);
   useEffect(() => {
     lookupFullCocktailDetailsById(id)
       .then((data) => {
@@ -14,7 +14,6 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
         setRecipe({ ...data.drinks[0] });
       });
   }, []);
-  console.log(allIngredients)
   return (
     <div>
       <img data-testid="recipe-photo" src={recipe.strDrinkThumb} alt={`${recipe.strDrink}`} />
@@ -39,8 +38,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
           frameBorder="0"
           allow="autoplay;encrypted-media"
           allowFullScreen
-        >
-        </iframe>
+        />  
       </div>
     </div>
   );

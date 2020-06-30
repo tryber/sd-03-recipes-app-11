@@ -1,30 +1,30 @@
 export const filterIngredientsMeals = (data) => {
-  const results = {}
+  const results = {};
   const arrayIngredients = Object.entries(data)
     .reduce(({ ingredients, measure }, act) => {
-      if (act[0].includes('strIngredient') && act[1].length > 1) ingredients.push(act[1])
-      if (act[0].includes('strMeasure') && act[1].length > 1) measure.push(act[1])
-      return { ingredients: [...ingredients], measure: [...measure] }
+      if (act[0].includes('strIngredient') && act[1].length > 1) ingredients.push(act[1]);
+      if (act[0].includes('strMeasure') && act[1].length > 1) measure.push(act[1]);
+      return { ingredients: [...ingredients], measure: [...measure] };
     }, { ingredients: [], measure: [] });
-  const arrayIngredientsPos0 = Object.entries(arrayIngredients)[0]
-  const arrayIngredientsPos1 = Object.entries(arrayIngredients)[1]
-  arrayIngredientsPos0[1].forEach((el, i) => results[el] = arrayIngredientsPos1[1][i])
+  const arrayIngredientsPos0 = Object.entries(arrayIngredients)[0];
+  const arrayIngredientsPos1 = Object.entries(arrayIngredients)[1];
+  arrayIngredientsPos0[1].forEach((el, i) => results[el] = arrayIngredientsPos1[1][i]);
   return Object.entries(results);
-}
+};
 
 export const filterIngredientsCockTails = (data) => {
-  const results = {}
+  const results = {};
   const arrayIngredients = Object.entries(data)
     .reduce(({ ingredients, measure }, act) => {
-      if (act[0].includes('strIngredient') && act[1] !== null) ingredients.push(act[1])
-      if (act[0].includes('strMeasure') && act[1] !== null) measure.push(act[1])
-      return { ingredients: [...ingredients], measure: [...measure] }
+      if (act[0].includes('strIngredient') && act[1] !== null) ingredients.push(act[1]);
+      if (act[0].includes('strMeasure') && act[1] !== null) measure.push(act[1]);
+      return { ingredients: [...ingredients], measure: [...measure] };
     }, { ingredients: [], measure: [] });
-  const arrayIngredientsPos0 = Object.entries(arrayIngredients)[0]
-  const arrayIngredientsPos1 = Object.entries(arrayIngredients)[1]
-  arrayIngredientsPos0[1].forEach((el, i) => results[el] = arrayIngredientsPos1[1][i])
+  const arrayIngredientsPos0 = Object.entries(arrayIngredients)[0];
+  const arrayIngredientsPos1 = Object.entries(arrayIngredients)[1];
+  arrayIngredientsPos0[1].forEach((el, i) => results[el] = arrayIngredientsPos1[1][i]);
   return Object.entries(results);
-}
+};
 
 // const test = {
 //   "idMeal": "52977",
@@ -32,8 +32,8 @@ export const filterIngredientsCockTails = (data) => {
 //   "strDrinkAlternate": null,
 //   "strCategory": "Side",
 //   "strArea": "Turkish",
-//   "strInstructions": "Pick through your lentils for any foreign debris, rinse them 2 or 3 times, drain, and set aside.  Fair warning, this will probably turn your lentils into a solid block that you’ll have to break up later\r\nIn a large pot over medium-high heat, sauté the olive oil and the onion with a pinch of salt for about 3 minutes, then add the carrots and cook for another 3 minutes.\r\nAdd the tomato paste and stir it around for around 1 minute. Now add the cumin, paprika, mint, thyme, black pepper, and red pepper as quickly as you can and stir for 10 seconds to bloom the spices. Congratulate yourself on how amazing your house now smells.\r\nImmediately add the lentils, water, broth, and salt. Bring the soup to a (gentle) boil.\r\nAfter it has come to a boil, reduce heat to medium-low, cover the pot halfway, and cook for 15-20 minutes or until the lentils have fallen apart and the carrots are completely cooked.\r\nAfter the soup has cooked and the lentils are tender, blend the soup either in a blender or simply use a hand blender to reach the consistency you desire. Taste for seasoning and add more salt if necessary.\r\nServe with crushed-up crackers, torn up bread, or something else to add some extra thickness.  You could also use a traditional thickener (like cornstarch or flour), but I prefer to add crackers for some texture and saltiness.  Makes great leftovers, stays good in the fridge for about a week.",
-//   "strMealThumb": "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg",
+//   "strInstructions": "Pick through your lentils for any foreign debris,
+//   "strMealThumb": "https://wwmeals/58oia61564916529.jpg",
 //   "strTags": "Soup",
 //   "strYoutube": "https://www.youtube.com/watch?v=VVnZd8A84z4",
 //   "strIngredient1": "Lentils",
