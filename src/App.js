@@ -3,8 +3,10 @@ import { Switch, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Meals from './components/Meals';
 import ComidasProvider from './context/ComidasProvider';
-import RecipeDetails from './components/RecipeDetails';
-
+import Perfil from './components/Perfil';
+import Explorar from './components/Explorar';
+import RecipeDetailsMeals from './components/RecipeDetailsMeals';
+import RecipeDetailsCockTails from './components/RecipeDetailsCockTails';
 import './styles/styles.css';
 
 function App() {
@@ -19,18 +21,21 @@ function App() {
             <Route
               exact
               path="/comidas/:id"
-              render={(props) => <RecipeDetails {...props} type="meal" />}
+              render={(props) => <RecipeDetailsMeals {...props} type="meal" />}
             />
-            <Route exact path="/bebidas/:id" />
-            <Route exact path="/comidas/:id/in-progress" />
+            <Route
+              exact
+              path="/bebidas/:id"
+              render={(props) => <RecipeDetailsCockTails {...props} type="cocktail" />}
+            />
             <Route exact path="/bebidas/:id/in-progress" />
-            <Route exact path="/explorar" />
-            <Route exact path="/explorar/comidas" />
-            <Route exact path="/explorar/bebidas" />
+            <Route exact path="/explorar" component={Explorar} />
+            <Route exact path="/explorar/comidas" component={Explorar} />
+            <Route exact path="/explorar/bebidas" component={Explorar} />
             <Route exact path="/explorar/comidas/ingredientes" />
             <Route exact path="/explorar/bebidas/ingredientes" />
             <Route exact path="/explorar/comidas/area" />
-            <Route exact path="/perfil" />
+            <Route exact path="/perfil" component={Perfil} />
             <Route exact path="/receitas-feitas" />
             <Route exact path="/receitas-favoritas" />
           </ComidasProvider>
