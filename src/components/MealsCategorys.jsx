@@ -16,8 +16,6 @@ function MealsCategorys({ type }) {
     });
   }, [setCategories, setIsFetching, type]);
 
-  console.log('Retorna as categorias', categories);
-
   const onHandlelistMealsByCategory = (category) => {
     searchMealByCategory(category, type).then((data) =>
       setMeals((data.meals || data.drinks).slice(0, 12)),

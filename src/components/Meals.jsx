@@ -8,8 +8,6 @@ import MealsCard from './MealsCard';
 import Loading from './Loading';
 import ComidasContext from '../context/ComidasContext';
 import '../styles/styles.css';
-import { searchMealsByName } from '../services/requestMealApi';
-import MealsCard from './MealsCard';
 import MealsCategorys from './MealsCategorys';
 
 function Meals({ type, match }) {
