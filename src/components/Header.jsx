@@ -5,17 +5,45 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import ComidasContext from '../context/ComidasContext';
 
-function Header({ title, search }) {
+const headerTitle = (history) => {
+  const local = history.location.pathname;
+  switch (local) {
+    case '/bebidas':
+      return 'Bebidas';
+    case '/comidas':
+      return 'Comidas';
+    case '/explorar':
+      return 'Explorar';
+    case '/explorar/comidas':
+      return 'Explorar Comidas';
+    case '/explorar/comidas/area':
+      return 'Explorar Origem';
+    case '/explorar/comidas/ingredientes':
+      return 'Explorar Ingredientes';
+    case '/explorar/bebidas/ingredientes':
+      return 'Explorar Ingredientes';
+    case '/explorar/bebidas':
+      return 'Explorar Bebidas';
+    case '/receitas-feitas':
+      return 'Receitas Feitas';
+    case '/perfil':
+      return 'Perfil';
+    default:
+      return 'Receitas de Comidas';
+  }
+};
+
+function Header({ search }) {
   const history = useHistory();
   const { toggleSearch } = useContext(ComidasContext);
   return (
-    <header className="Header">
-      <button onClick={() => history.push('/perfil')} className="Icon">
+    <header className="Header" >
+      <button onClick={() => history.push('/perfil')} className="Icon" >
         <img data-testid="profile-top-btn" src={profileIcon} alt="Icone do Profile" />
       </button>
-      <h2 data-testid="page-title">{title}</h2>
-      {search && (
-        <button onClick={toggleSearch} className="Icon">
+      <h2 data-testid="page-title">{headerTitle(history)}</h2>
+      {(search || history.location.pathname === '/explorar/comidas/area') && (
+        <button className="Icon" onClick={toggleSearch} >
           <img
             data-testid="search-top-btn"
             src={searchIcon} alt="search icon"
@@ -27,9 +55,11 @@ function Header({ title, search }) {
 }
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired,
-  search: PropTypes.bool.isRequired,
+  search: PropTypes.bool,
+};
 
+Header.defaultProps = {
+  search: false,
 };
 
 export default Header;
