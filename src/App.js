@@ -1,12 +1,12 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Login from './components/Login';
-import Meals from './components/Meals';
+import Login from './pages/Login';
+import Meals from './pages/Meals';
 import ComidasProvider from './context/ComidasProvider';
-import Perfil from './components/Perfil';
-import Explorar from './components/Explorar';
-import RecipeDetailsMeals from './components/RecipeDetailsMeals';
-import RecipeDetailsCockTails from './components/RecipeDetailsCockTails';
+import Perfil from './pages/Perfil';
+import Explorar from './pages/Explorar';
+import RecipeDetailsMeals from './pages/RecipeDetailsMeals';
+import RecipeDetailsCockTails from './pages/RecipeDetailsCockTails';
 import './styles/styles.css';
 
 function App() {
