@@ -7,6 +7,7 @@ function ComidasProvider({ children }) {
   const [search, setSearch] = useState(false);
   const [meals, setMeals] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
+  const [categories, setCategories] = useState([]);
 
   const store = {
     searchValue: search,
@@ -15,6 +16,8 @@ function ComidasProvider({ children }) {
     setMeals,
     isFetching,
     setIsFetching,
+    categories,
+    setCategories,
   };
   return (
     <ComidasContext.Provider value={store}>
