@@ -39,8 +39,12 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   );
 };
 
+RecipeDetailsMeals.defaultProps = {
+  type: ''
+};
+
 RecipeDetailsMeals.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
