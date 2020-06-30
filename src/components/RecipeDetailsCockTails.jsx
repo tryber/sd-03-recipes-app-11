@@ -12,11 +12,10 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
       .then((data) => {
         const allIngredients = filterIngredientsCockTails({ ...data.drinks[0] });
         const filteredAllIngredients = auxiliarFuncition(allIngredients);
-        setRecipe({ ...data.drinks[0], ingredients: filteredAllIngredients});
+        setRecipe({ ...data.drinks[0], ingredients: filteredAllIngredients });
         setFetchRecipe(true);
       });
   }, []);
-  console.log(fetchRecipe)
   return (
     <div>
       <img data-testid="recipe-photo" src={recipe.strDrinkThumb} alt={`${recipe.strDrink}`} />
@@ -24,7 +23,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
       <button data-testid="favorite-btn" >Share</button>
       <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
       <h5 data-testid="recipe-category">{recipe.strCategory}</h5>
-      {fetchRecipe && <Ingredients value={recipe}/>}
+      {fetchRecipe && <Ingredients value={recipe} />}
       <div>
         <iframe
           data-testid="video"
