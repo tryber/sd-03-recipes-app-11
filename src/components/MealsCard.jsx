@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import '../styles/styles.css';
 
 const MealsCard = ({ recipe, index, type }) => {
   const stringsObj = {
@@ -9,17 +10,21 @@ const MealsCard = ({ recipe, index, type }) => {
   };
   return (
     <Link to={`/${stringsObj[type][0]}/${recipe[`id${stringsObj[type][1]}`]}`}>
-      <div data-testid={`${index}-recipe-card`}>
-        <img
-          data-testid={`${index}-card-img`}
-          alt="Recipe"
-          className="recipe-image"
-          src={recipe[`str${stringsObj[type][1]}Thumb`]}
-        />
-        <h4 data-testid={`${index}-card-name`} className="recipe-title">
-          {recipe[`str${stringsObj[type][1]}`]}
-        </h4>
-      </div>
+      <center data-testid={`${index}-recipe-card`} className="Div">
+        <section className="Section">
+          <div className="Image">
+            <img
+              data-testid={`${index}-card-img`}
+              alt="Recipe"
+              className="Cards"
+              src={recipe[`str${stringsObj[type][1]}Thumb`]}
+            />
+          </div>
+          <h4 data-testid={`${index}-card-name`} className="Title-Cards">
+            {recipe[`str${stringsObj[type][1]}`]}
+          </h4>
+        </section>
+      </center>
     </Link>
   );
 };
