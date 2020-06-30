@@ -1,27 +1,27 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { lookupFullMealDetailsById } from '../services/requestMealApi';
+import { lookupFullCocktailDetailsById } from '../services/requestCocktailApi';
+import { filterIngredientsCockTails, auxiliarFuncition } from '../services/filterIngredients';
 import ComidasContext from '../context/ComidasContext';
-import { filterIngredientsMeals, auxiliarFuncition } from '../services/filterIngredients';
-import Ingredients from './Ingredients';
+import Ingredients from '../components/Ingredients';
 
-const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
+const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
   const { recipe, setRecipe, fetchRecipe, setFetchRecipe } = useContext(ComidasContext);
   useEffect(() => {
-    lookupFullMealDetailsById(id, type)
+    lookupFullCocktailDetailsById(id)
       .then((data) => {
-        const allIngredients = filterIngredientsMeals({ ...data.meals[0] });
+        const allIngredients = filterIngredientsCockTails({ ...data.drinks[0] });
         const filteredAllIngredients = auxiliarFuncition(allIngredients);
+        setRecipe({ ...data.drinks[0], ingredients: filteredAllIngredients });
         setFetchRecipe(true);
-        setRecipe({ ...data.meals[0], ingredients: filteredAllIngredients });
       });
   }, []);
   return (
     <div>
-      <img data-testid="recipe-photo" src={recipe.strMealThumb} alt={`${recipe.strMeal}`} />
+      <img data-testid="recipe-photo" src={recipe.strDrinkThumb} alt={`${recipe.strDrink}`} />
       <button data-testid="share-btn" >Fav</button>
       <button data-testid="favorite-btn" >Share</button>
-      <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
+      <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
       <h5 data-testid="recipe-category">{recipe.strCategory}</h5>
       {fetchRecipe && <Ingredients value={recipe} />}
       <div>
@@ -29,7 +29,7 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
           data-testid="video"
           width="560"
           height="315"
-          src={recipe.strYoutube}
+          src={recipe.strVideo}
           frameBorder="0"
           allow="autoplay;encrypted-media"
           allowFullScreen
@@ -39,18 +39,12 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   );
 };
 
-RecipeDetailsMeals.defaultProps = {
-  type: '',
-  id: 0,
-};
-
-RecipeDetailsMeals.propTypes = {
-  type: PropTypes.string,
+RecipeDetailsCockTails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
 
-export default RecipeDetailsMeals;
+export default RecipeDetailsCockTails;
