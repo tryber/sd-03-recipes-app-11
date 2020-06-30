@@ -24,7 +24,7 @@ function MealsCategorys({ type }) {
 
   if (isFetching) return <Loading />;
   return (
-    <div>
+    <div className="Category">
       <button type="button">All</button>
       {categories.map((category) => (
         <button

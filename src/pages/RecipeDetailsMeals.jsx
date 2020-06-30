@@ -4,6 +4,7 @@ import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import ComidasContext from '../context/ComidasContext';
 import { filterIngredientsMeals, auxiliarFuncition } from '../services/filterIngredients';
 import Ingredients from '../components/Ingredients';
+import '../styles/details.css';
 
 const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   const { recipe, setRecipe, fetchRecipe, setFetchRecipe } = useContext(ComidasContext);
@@ -18,11 +19,22 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   }, []);
   return (
     <div>
-      <img data-testid="recipe-photo" src={recipe.strMealThumb} alt={`${recipe.strMeal}`} />
-      <button data-testid="share-btn" >Fav</button>
-      <button data-testid="favorite-btn" >Share</button>
-      <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
-      <h5 data-testid="recipe-category">{recipe.strCategory}</h5>
+      <img
+        className="Image-Details"
+        data-testid="recipe-photo"
+        src={recipe.strMealThumb}
+        alt={`${recipe.strMeal}`}
+      /><br />
+      <div className="Description">
+        <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
+        <div>
+          <button data-testid="share-btn" >Fav</button>
+          <button data-testid="favorite-btn" >Share</button>
+        </div>
+      </div>
+      <section>
+        <h5 className="Title-List" data-testid="recipe-category">{recipe.strCategory}</h5>
+      </section>
       {fetchRecipe && <Ingredients value={recipe} />}
       <div>
         <iframe

@@ -1,0 +1,35 @@
+@media screen and ( max-width: 760px) {
+  .Container {
+    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.Image-Details {
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.7);
+  margin-top: 50px;
+  width: 400px;
+}
+
+.Description {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+}
+
+.Description h2 {
+  font-size: 22pt;
+}
+
+.Title-List {
+  font-size: 16pt;
+  margin: 10px 0;
+}
+
+.Ingredientes {
+  background-color: #c4c4c4;
+  max-width: 400px;
+  padding-left: 10px;
+  text-align: left;
+}

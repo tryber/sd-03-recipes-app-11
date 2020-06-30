@@ -4,6 +4,7 @@ import { lookupFullCocktailDetailsById } from '../services/requestCocktailApi';
 import { filterIngredientsCockTails, auxiliarFuncition } from '../services/filterIngredients';
 import ComidasContext from '../context/ComidasContext';
 import Ingredients from '../components/Ingredients';
+import '../styles/details.css';
 
 const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
   const { recipe, setRecipe, fetchRecipe, setFetchRecipe } = useContext(ComidasContext);
@@ -17,12 +18,25 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
       });
   }, []);
   return (
-    <div>
-      <img data-testid="recipe-photo" src={recipe.strDrinkThumb} alt={`${recipe.strDrink}`} />
-      <button data-testid="share-btn" >Fav</button>
-      <button data-testid="favorite-btn" >Share</button>
-      <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
-      <h5 data-testid="recipe-category">{recipe.strCategory}</h5>
+    <section>
+      <div>
+        <img
+          className="Image-Details"
+          data-testid="recipe-photo"
+          src={recipe.strDrinkThumb}
+          alt={`${recipe.strDrink}`}
+        />
+      </div><br />
+      <div className="Description">
+        <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
+        <div>
+          <button data-testid="share-btn" >Fav</button>
+          <button data-testid="favorite-btn" >Share</button>
+        </div>
+      </div>
+      <section>
+        <h5 className="Title-List" data-testid="recipe-category">{recipe.strCategory}</h5>
+      </section>
       {fetchRecipe && <Ingredients value={recipe} />}
       <div>
         <iframe
@@ -35,7 +49,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
           allowFullScreen
         />
       </div>
-    </div>
+    </section>
   );
 };
 
