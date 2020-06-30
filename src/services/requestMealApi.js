@@ -19,7 +19,7 @@ export const searchAllMealCategories = (type) => fetch(`https://www.the${type}db
     .then((response) => response.json()
     .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
-export const searchAllMealCategoriesDetails = (type, category) => fetch(`https://www.the${type}db.com/api/json/v1/1/list.php?c=${category}`)
+export const searchAllMealCategoriesDetails = (type) => fetch(`https://www.the${type}db.com/api/json/v1/1/list.php?c=list`)
     .then((response) => response.json()
     .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
@@ -35,7 +35,7 @@ export const searchMealByMainIngredient = (ingredient, type) => fetch(`https://w
     .then((response) => response.json()
     .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
-export const searchMealByCategory = (category) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+export const searchMealByCategory = (category, type) => fetch(`https://www.the${type}db.com/api/json/v1/1/filter.php?c=${category}`)
     .then((response) => response.json()
     .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
