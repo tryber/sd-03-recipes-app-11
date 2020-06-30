@@ -41,6 +41,7 @@ function SearchBar() {
           />
           Primeira letra
         </label>
+        <button data-testid="exec-search-btn">Buscar</button>
       </div>
     </div>
   );
