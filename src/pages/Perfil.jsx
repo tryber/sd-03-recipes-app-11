@@ -9,7 +9,7 @@ function Perfil() {
     <div>
       <Header title="Perfil" />
       <section className="Perfil">
-        <h2>{email}</h2>
+        <h2 data-testid="profile-email">{email}</h2>
         <Link to="receitas-feitas">
           <button data-testid="profile-done-btn">Receitas Feitas</button>
         </Link>
