@@ -1,19 +1,22 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { lookupFullCocktailDetailsById } from '../services/requestCocktailApi';
+import { filterIngredientsCockTails, auxiliarFuncition } from '../services/filterIngredients';
 import ComidasContext from '../context/ComidasContext';
-import { filterIngredientsCockTails } from '../services/filterIngredients';
+import Ingredients from './Ingredients';
 
 const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
-  const { recipe, setRecipe } = useContext(ComidasContext);
-  const allIngredients = filterIngredientsCockTails(recipe);
+  const { recipe, setRecipe, fetchRecipe, setFetchRecipe } = useContext(ComidasContext);
   useEffect(() => {
     lookupFullCocktailDetailsById(id)
       .then((data) => {
-        console.log(data)
-        setRecipe({ ...data.drinks[0] });
+        const allIngredients = filterIngredientsCockTails({ ...data.drinks[0] });
+        const filteredAllIngredients = auxiliarFuncition(allIngredients);
+        setRecipe({ ...data.drinks[0], ingredients: filteredAllIngredients});
+        setFetchRecipe(true);
       });
   }, []);
+  console.log(fetchRecipe)
   return (
     <div>
       <img data-testid="recipe-photo" src={recipe.strDrinkThumb} alt={`${recipe.strDrink}`} />
@@ -21,14 +24,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
       <button data-testid="favorite-btn" >Share</button>
       <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
       <h5 data-testid="recipe-category">{recipe.strCategory}</h5>
-      {allIngredients.map((el, index) => (
-        <p
-          key={el[0]}
-          data-testid={`${index}-ingredient-name-and-measure`}
-        >
-          {`${el[0]} - ${el[1]}`}
-        </p>))}
-      <p>{recipe.strInstructions}</p>
+      {fetchRecipe && <Ingredients value={recipe}/>}
       <div>
         <iframe
           data-testid="video"
@@ -38,7 +34,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
           frameBorder="0"
           allow="autoplay;encrypted-media"
           allowFullScreen
-        />  
+        />
       </div>
     </div>
   );

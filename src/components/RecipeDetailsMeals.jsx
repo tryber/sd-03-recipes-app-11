@@ -2,17 +2,21 @@ import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import ComidasContext from '../context/ComidasContext';
-import { filterIngredientsMeals } from '../services/filterIngredients';
+import { filterIngredientsMeals, auxiliarFuncition } from '../services/filterIngredients';
+import Ingredients from './Ingredients';
 
 const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
-  const { recipe, setRecipe } = useContext(ComidasContext);
-  const allIngredients = filterIngredientsMeals(recipe);
+  const { recipe, setRecipe, fetchRecipe, setFetchRecipe } = useContext(ComidasContext);
   useEffect(() => {
     lookupFullMealDetailsById(id, type)
       .then((data) => {
-        setRecipe({ ...data.meals[0] });
+        const allIngredients = filterIngredientsMeals({ ...data.meals[0] });
+        const filteredAllIngredients = auxiliarFuncition(allIngredients);
+        setFetchRecipe(true);
+        setRecipe({ ...data.meals[0], ingredients: filteredAllIngredients });
       });
   }, []);
+  console.log(recipe)
   return (
     <div>
       <img data-testid="recipe-photo" src={recipe.strMealThumb} alt={`${recipe.strMeal}`} />
@@ -20,14 +24,7 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       <button data-testid="favorite-btn" >Share</button>
       <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
       <h5 data-testid="recipe-category">{recipe.strCategory}</h5>
-      {allIngredients.map((el, index) => (
-        <p
-          key={el[0]}
-          data-testid={`${index}-ingredient-name-and-measure`}
-        >
-          {`${el[0]} - ${el[1]}`}
-        </p>))}
-      <p>{recipe.strInstructions}</p>
+      {fetchRecipe && <Ingredients value={recipe}/>}
       <div>
         <iframe
           data-testid="video"
@@ -41,15 +38,6 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       </div>
     </div>
   );
-};
-
-RecipeDetailsMeals.propTypes = {
-  type: PropTypes.string.isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
 };
 
 export default RecipeDetailsMeals;
