@@ -8,6 +8,7 @@ import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Ingredients from '../components/Ingredients';
+import Recomendations from '../components/Recomendations';
 
 const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   const { recipe, setRecipe, fetchRecipe, setFetchRecipe } = useContext(ComidasContext);
@@ -22,6 +23,8 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   return (
     <div>
       <img
+        width="20"
+        height="20"
         data-testid="recipe-photo"
         src={recipe.strMealThumb}
         alt={`${recipe.strMeal}`}
@@ -33,7 +36,7 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
         />
       </button>
       <button
-        data-testid="share-btn"
+        data-testid="favorite-btn"
         onClick={() => setFetchRecipe(!fetchRecipe)}
         className="Icon"
       >
@@ -44,10 +47,12 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       <h5 data-testid="recipe-category">{recipe.strCategory}</h5>
       {<Ingredients value={recipe} />}
       <p data-testid="instructions">{recipe.strInstructions}</p>
+      <div>
       {recipe.strYoutube === null
         ? <span>No video to attemp</span>
         : <ReactPlayer data-testid="video" url={recipe.strYoutube} />}
-      <h2>Recomendadas</h2>
+      </div>
+      <Recomendations type="cocktail"/>
       <button
         data-testid="start-recipe-btn"
         className="Button-Login"

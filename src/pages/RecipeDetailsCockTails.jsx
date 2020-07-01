@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import ReactPlayer from 'react-player';
 import { lookupFullCocktailDetailsById } from '../services/requestCocktailApi';
 import { filterIngredientsCockTails, auxiliarFuncition } from '../services/filterIngredients';
 import ComidasContext from '../context/ComidasContext';
@@ -8,6 +7,7 @@ import Ingredients from '../components/Ingredients';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+import Recomendations from '../components/Recomendations';
 
 const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
   const { recipe, setRecipe, fetchRecipe, setFetchRecipe } = useContext(ComidasContext);
@@ -22,6 +22,8 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
   return (
     <div>
       <img
+        width="20"
+        height="20"
         data-testid="recipe-photo"
         src={recipe.strDrinkThumb}
         alt={`${recipe.strDrink}`}
@@ -41,13 +43,10 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
           : <img src={whiteHeartIcon} alt="favButton" /> }
       </button>
       <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
-      <h5 data-testid="recipe-category">{recipe.strCategory}</h5>
-      {fetchRecipe && <Ingredients value={recipe} />}
+      <h5 data-testid="recipe-category">{recipe.strAlcoholic}</h5>
+      {<Ingredients value={recipe} />}
       <p data-testid="instructions">{recipe.strInstructions}</p>
-      {recipe.strVideo === null
-        ? <span>No video to attemp</span>
-        : <ReactPlayer data-testid="video" url={recipe.strVideo} />}
-      <h2>Recomendadas</h2>
+      <Recomendations type="meal"/>
       <button
         data-testid="start-recipe-btn"
         className="Button-Login"

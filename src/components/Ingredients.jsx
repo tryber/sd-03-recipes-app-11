@@ -15,7 +15,7 @@ function Ingredients({ value: { ingredients } }) {
 
 Ingredients.propTypes = {
   value: PropTypes.shape({
-    ingredients: PropTypes.array.isRequired,
+    ingredients: PropTypes.array,
   }).isRequired,
 };
 
