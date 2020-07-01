@@ -7,8 +7,8 @@ import SearchBar from '../components/SearchBar';
 import MealsCard from '../components/MealsCard';
 import Loading from '../components/Loading';
 import ComidasContext from '../context/ComidasContext';
-import '../styles/styles.css';
 import MealsCategorys from '../components/MealsCategorys';
+import '../styles/main.css';
 
 function Meals({ type, match }) {
   const { searchValue, meals, setMeals, isFetching, setIsFetching } = useContext(ComidasContext);

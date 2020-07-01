@@ -7,7 +7,6 @@ import Perfil from './pages/Perfil';
 import Explorar from './pages/Explorar';
 import RecipeDetailsMeals from './pages/RecipeDetailsMeals';
 import RecipeDetailsCockTails from './pages/RecipeDetailsCockTails';
-import './styles/styles.css';
 
 function App() {
   return (
