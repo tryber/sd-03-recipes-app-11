@@ -38,7 +38,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
         alt={`${recipe.strDrink}`}
       />
       <Clipboard
-        name="CopieMealLink"
+        name="CopieCocktailLink"
         data-testid="share-btn"
         className="Icon"
         onClick={() => {
