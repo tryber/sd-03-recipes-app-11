@@ -44,7 +44,6 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
           <Clipboard
             name="CopieMealLink"
             data-testid="share-btn"
-            className="Icon"
             onClick={() => {
               navigator.clipboard.writeText(window.location.href);
               setLinkCopie(true);
@@ -58,7 +57,6 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
           <button
             name="favorite2"
             onClick={() => setFetchRecipe(!fetchRecipe)}
-            className="Icon"
           >
             {fetchRecipe
               ? <img data-testid="favorite-btn" src={blackHeartIcon} alt="favButton" />
@@ -70,24 +68,26 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       <section>
         <h5 className="Title-List" data-testid="recipe-category">{recipe.strCategory}</h5>
         {<Ingredients value={recipe} />}
-        <p data-testid="instructions">{recipe.strInstructions}</p>
+        <p className="Instruction" data-testid="instructions">{recipe.strInstructions}</p>
       </section>
-      <div>
+      <div className="Video">
         {recipe.strYoutube === null
           ? <span>No video to attemp</span>
-          : <ReactPlayer data-testid="video" url={recipe.strYoutube} />}
+          : <ReactPlayer data-testid="video" url={recipe.strYoutube} width="400px" />}
       </div>
       <Recomendations type="cocktail" />
-      <button
-        className="Button-Login"
-      >
+      <div className="Progresse">
         <Link
           to={`/comidas/${id}/in-progress`}
-          data-testid="start-recipe-btn"
         >
-          Inciar Receita
+          <button
+            data-testid="start-recipe-btn"
+            className="Button-Progresse"
+          >
+            Inciar Receita
+        </button>
         </Link>
-      </button>
+      </div>
     </div>
   );
 };

@@ -45,7 +45,6 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
           <Clipboard
             name="CopieCocktailLink"
             data-testid="share-btn"
-            className="Icon"
             onClick={() => {
               navigator.clipboard.writeText(window.location.href);
               setLinkCopie(true);
@@ -59,7 +58,6 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
           <button
             name="favorite1"
             onClick={() => setFetchRecipe(!fetchRecipe)}
-            className="Icon"
           >
             {fetchRecipe
               ? <img data-testid="favorite-btn" src={blackHeartIcon} alt="favButton" />
@@ -74,16 +72,18 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
         <p data-testid="instructions">{recipe.strInstructions}</p>
       </section>
       <Recomendations type="meal" />
-      <button
-        className="Button-Login"
-      >
+      <div className="Progresse">
         <Link
           to={`/bebidas/${id}/in-progress`}
-          data-testid="start-recipe-btn"
         >
-          Iniciar Receita
-        </Link>
+          <button
+            data-testid="start-recipe-btn"
+            className="Button-Progresse"
+          >
+            Iniciar Receita
       </button>
+        </Link>
+      </div>
     </section>
   );
 };

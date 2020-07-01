@@ -29,10 +29,12 @@ const Recomendations = ({ type }) => {
 
   return (
     <div>
-      <h2>Rec</h2>
-      {recomendations.map((el, i) => (
-        <RecomendationCard key={el[`id${upperCase[type]}`]} recipe={el} index={i} type={type} />
-      ))}
+      <h2>Recomendações</h2>
+      <div className="Rec-Menu">
+        {recomendations.map((el, i) => (
+          <RecomendationCard key={el[`id${upperCase[type]}`]} recipe={el} index={i} type={type} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -9,15 +9,14 @@ const RecomendationCard = ({ recipe, index, type }) => {
   };
   return (
     <Link to={`/${stringsObjRec[type][0]}/${recipe[`id${stringsObjRec[type][1]}`]}`}>
-      <div>
+      <div className="Recomendation">
         <img
-          width="50"
-          height="50"
+          className="Image-Recomendation"
           data-testid={`${index}-recomendation-card`}
           alt="Recipe"
           src={recipe[`str${stringsObjRec[type][1]}Thumb`]}
-        />
-        <h4 data-testid={`${index}-recomendation-title`} className="recipe-title">
+        /><br />
+        <h4 data-testid={`${index}-recomendation-title`} className="Recipe-title">
           {recipe[`str${stringsObjRec[type][1]}`]}
         </h4>
       </div>
