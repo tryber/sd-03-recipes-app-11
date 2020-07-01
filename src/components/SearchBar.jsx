@@ -2,7 +2,7 @@ import React from 'react';
 import RadioSelectors from './SearchBox/RadioSelectors';
 import SearchInput from './SearchBox/SearchInput';
 import SearchButton from './SearchBox/SearchButton';
-import '../styles/styles.css';
+import '../styles/main.css';
 
 function SearchBar() {
   return (
