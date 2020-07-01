@@ -11,6 +11,7 @@ function ComidasProvider({ children }) {
   const [fetchRecipe, setFetchRecipe] = useState(false);
   const [categories, setCategories] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
+  const [linkCopie, setLinkCopie] = useState(false)
 
   const store = {
     searchValue: search,
@@ -27,6 +28,8 @@ function ComidasProvider({ children }) {
     setCategories,
     recomendations,
     setRecomendations,
+    linkCopie,
+    setLinkCopie,
   };
   return (
     <ComidasContext.Provider value={store}>

@@ -1,6 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
+import Clipboard from 'react-clipboard.js';
+import { Link } from 'react-router-dom';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import ComidasContext from '../context/ComidasContext';
 import { filterIngredientsMeals, auxiliarFuncition } from '../services/filterIngredients';
@@ -11,7 +13,14 @@ import Ingredients from '../components/Ingredients';
 import Recomendations from '../components/Recomendations';
 
 const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
-  const { recipe, setRecipe, fetchRecipe, setFetchRecipe } = useContext(ComidasContext);
+  const {
+    recipe,
+    setRecipe,
+    fetchRecipe,
+    setFetchRecipe,
+    linkCopie,
+    setLinkCopie,
+  } = useContext(ComidasContext);
   useEffect(() => {
     lookupFullMealDetailsById(id, type)
       .then((data) => {
@@ -29,21 +38,29 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
         src={recipe.strMealThumb}
         alt={`${recipe.strMeal}`}
       />
-      <button data-testid="share-btn" className="Icon">
+      <Clipboard
+        data-testid="share-btn"
+        className="Icon"
+        onClick={() => {
+          navigator.clipboard.writeText(window.location.href)
+          setLinkCopie(true)
+        }}
+      >
         <img
           src={shareIcon}
           alt="share button"
         />
-      </button>
+      </Clipboard>
       <button
         name="favorite2"
-        data-testid="favorite-btn"
         onClick={() => setFetchRecipe(!fetchRecipe)}
         className="Icon"
       >
-        {fetchRecipe ? <img src={blackHeartIcon} alt="favButton" />
-          : <img src={whiteHeartIcon} alt="favButton" /> }
+        {fetchRecipe
+          ? <img data-testid="favorite-btn" src={blackHeartIcon} alt="favButton" />
+          : <img data-testid="favorite-btn" src={whiteHeartIcon} alt="favButton" /> }
       </button>
+      {linkCopie && <span>Link copiado!</span>}
       <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
       <h5 data-testid="recipe-category">{recipe.strCategory}</h5>
       {<Ingredients value={recipe} />}
@@ -55,10 +72,13 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       </div>
       <Recomendations type="cocktail" />
       <button
-        data-testid="start-recipe-btn"
         className="Button-Login"
       >
-        Inciar Receita
+        <Link to={`/comidas/${id}/in-progress`}
+          data-testid="start-recipe-btn"
+          >
+          Inciar Receita
+        </Link>
       </button>
     </div>
   );
