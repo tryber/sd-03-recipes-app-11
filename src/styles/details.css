@@ -41,7 +41,7 @@
 
 .Rec-Menu {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin-bottom: 100px;
   overflow-x: scroll;
   width: 550px;
