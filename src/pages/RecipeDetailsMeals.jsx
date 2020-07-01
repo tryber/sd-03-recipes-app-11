@@ -11,6 +11,7 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Ingredients from '../components/Ingredients';
 import Recomendations from '../components/Recomendations';
+import '../styles/details.css';
 
 const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   const {
@@ -32,56 +33,61 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   return (
     <div>
       <img
-        width="20"
-        height="20"
+        className="Image-Details"
         data-testid="recipe-photo"
         src={recipe.strMealThumb}
         alt={`${recipe.strMeal}`}
       />
-      <Clipboard
-        name="CopieMealLink"
-        data-testid="share-btn"
-        className="Icon"
-        onClick={() => {
-          navigator.clipboard.writeText(window.location.href);
-          setLinkCopie(true);
-        }}
-      >
-        <img
-          src={shareIcon}
-          alt="share button"
-        />
-      </Clipboard>
-      <button
-        name="favorite2"
-        onClick={() => setFetchRecipe(!fetchRecipe)}
-        className="Icon"
-      >
-        {fetchRecipe
-          ? <img data-testid="favorite-btn" src={blackHeartIcon} alt="favButton" />
-          : <img data-testid="favorite-btn" src={whiteHeartIcon} alt="favButton" /> }
-      </button>
-      {linkCopie && <span>Link copiado!</span>}
-      <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
-      <h5 data-testid="recipe-category">{recipe.strCategory}</h5>
-      {<Ingredients value={recipe} />}
-      <p data-testid="instructions">{recipe.strInstructions}</p>
-      <div>
+      <div className="Description">
+        <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
+        <div>
+          <Clipboard
+            name="CopieMealLink"
+            data-testid="share-btn"
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href);
+              setLinkCopie(true);
+            }}
+          >
+            <img
+              src={shareIcon}
+              alt="share button"
+            />
+          </Clipboard>
+          <button
+            name="favorite2"
+            onClick={() => setFetchRecipe(!fetchRecipe)}
+          >
+            {fetchRecipe
+              ? <img data-testid="favorite-btn" src={blackHeartIcon} alt="favButton" />
+              : <img data-testid="favorite-btn" src={whiteHeartIcon} alt="favButton" />}
+          </button>
+          {linkCopie && <span>Link copiado!</span>}
+        </div>
+      </div>
+      <section>
+        <h5 className="Title-List" data-testid="recipe-category">{recipe.strCategory}</h5>
+        {<Ingredients value={recipe} />}
+        <p className="Instruction" data-testid="instructions">{recipe.strInstructions}</p>
+      </section>
+      <div className="Video">
         {recipe.strYoutube === null
           ? <span>No video to attemp</span>
-          : <ReactPlayer data-testid="video" url={recipe.strYoutube} />}
+          : <ReactPlayer data-testid="video" url={recipe.strYoutube} width="400px" />}
       </div>
       <Recomendations type="cocktail" />
-      <button
-        className="Button-Login"
-      >
+      <div className="Progresse">
         <Link
           to={`/comidas/${id}/in-progress`}
-          data-testid="start-recipe-btn"
         >
-          Inciar Receita
+          <button
+            data-testid="start-recipe-btn"
+            className="Button-Progresse"
+          >
+            Inciar Receita
+        </button>
         </Link>
-      </button>
+      </div>
     </div>
   );
 };

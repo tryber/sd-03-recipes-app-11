@@ -10,6 +10,7 @@ import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Recomendations from '../components/Recomendations';
+import '../styles/details.css';
 
 const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
   const {
@@ -29,54 +30,61 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
       });
   }, []);
   return (
-    <div>
-      <img
-        width="20"
-        height="20"
-        data-testid="recipe-photo"
-        src={recipe.strDrinkThumb}
-        alt={`${recipe.strDrink}`}
-      />
-      <Clipboard
-        name="CopieCocktailLink"
-        data-testid="share-btn"
-        className="Icon"
-        onClick={() => {
-          navigator.clipboard.writeText(window.location.href);
-          setLinkCopie(true);
-        }}
-      >
+    <section>
+      <div>
         <img
-          src={shareIcon}
-          alt="share button"
+          className="Image-Details"
+          data-testid="recipe-photo"
+          src={recipe.strDrinkThumb}
+          alt={`${recipe.strDrink}`}
         />
-      </Clipboard>
-      <button
-        name="favorite1"
-        onClick={() => setFetchRecipe(!fetchRecipe)}
-        className="Icon"
-      >
-        {fetchRecipe
-          ? <img data-testid="favorite-btn" src={blackHeartIcon} alt="favButton" />
-          : <img data-testid="favorite-btn" src={whiteHeartIcon} alt="favButton" /> }
-      </button>
-      {linkCopie && <span>Link copiado!</span>}
-      <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
-      <h5 data-testid="recipe-category">{recipe.strAlcoholic}</h5>
-      {<Ingredients value={recipe} />}
-      <p data-testid="instructions">{recipe.strInstructions}</p>
+      </div>
+      <div className="Description">
+        <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
+        <div>
+          <Clipboard
+            name="CopieCocktailLink"
+            data-testid="share-btn"
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href);
+              setLinkCopie(true);
+            }}
+          >
+            <img
+              src={shareIcon}
+              alt="share button"
+            />
+          </Clipboard>
+          <button
+            name="favorite1"
+            onClick={() => setFetchRecipe(!fetchRecipe)}
+          >
+            {fetchRecipe
+              ? <img data-testid="favorite-btn" src={blackHeartIcon} alt="favButton" />
+              : <img data-testid="favorite-btn" src={whiteHeartIcon} alt="favButton" />}
+          </button>
+          {linkCopie && <span>Link copiado!</span>}
+        </div>
+      </div>
+      <section>
+        <h5 className="Title-List" data-testid="recipe-category">{recipe.strAlcoholic}</h5>
+        {<Ingredients value={recipe} />}
+        <p data-testid="instructions">{recipe.strInstructions}</p>
+      </section>
       <Recomendations type="meal" />
-      <button
-        className="Button-Login"
-      >
+      <div className="Progresse">
         <Link
           to={`/bebidas/${id}/in-progress`}
-          data-testid="start-recipe-btn"
         >
-          Iniciar Receita
-        </Link>
+          <button
+            data-testid="start-recipe-btn"
+            className="Button-Progresse"
+          >
+            Iniciar Receita
       </button>
-    </div>
+        </Link>
+      </div>
+    </section>
   );
 };
 

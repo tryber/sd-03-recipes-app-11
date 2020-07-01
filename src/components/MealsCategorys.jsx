@@ -34,7 +34,7 @@ function MealsCategorys({ type }) {
 
   if (isFetching) return <Loading />;
   return (
-    <div>
+    <div className="Category">
       <button
         type="button"
         data-testid="All-category-filter"
