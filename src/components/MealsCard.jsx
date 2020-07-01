@@ -8,6 +8,7 @@ const MealsCard = ({ recipe, index, type }) => {
     meal: ['comidas', 'Meal'],
     cocktail: ['bebidas', 'Drink'],
   };
+
   return (
     <Link to={`/${stringsObj[type][0]}/${recipe[`id${stringsObj[type][1]}`]}`}>
       <center data-testid={`${index}-recipe-card`} className="Div">

@@ -1,19 +1,32 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+import ReactPlayer from 'react-player';
+import Clipboard from 'react-clipboard.js';
+import { Link } from 'react-router-dom';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import ComidasContext from '../context/ComidasContext';
 import { filterIngredientsMeals, auxiliarFuncition } from '../services/filterIngredients';
+import shareIcon from '../images/shareIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Ingredients from '../components/Ingredients';
+import Recomendations from '../components/Recomendations';
 import '../styles/details.css';
 
 const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
-  const { recipe, setRecipe, fetchRecipe, setFetchRecipe } = useContext(ComidasContext);
+  const {
+    recipe,
+    setRecipe,
+    fetchRecipe,
+    setFetchRecipe,
+    linkCopie,
+    setLinkCopie,
+  } = useContext(ComidasContext);
   useEffect(() => {
     lookupFullMealDetailsById(id, type)
       .then((data) => {
         const allIngredients = filterIngredientsMeals({ ...data.meals[0] });
         const filteredAllIngredients = auxiliarFuncition(allIngredients);
-        setFetchRecipe(true);
         setRecipe({ ...data.meals[0], ingredients: filteredAllIngredients });
       });
   }, []);
@@ -24,29 +37,57 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
         data-testid="recipe-photo"
         src={recipe.strMealThumb}
         alt={`${recipe.strMeal}`}
-      /><br />
+      />
       <div className="Description">
         <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
         <div>
-          <button data-testid="share-btn" >Fav</button>
-          <button data-testid="favorite-btn" >Share</button>
+          <Clipboard
+            name="CopieMealLink"
+            data-testid="share-btn"
+            className="Icon"
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href);
+              setLinkCopie(true);
+            }}
+          >
+            <img
+              src={shareIcon}
+              alt="share button"
+            />
+          </Clipboard>
+          <button
+            name="favorite2"
+            onClick={() => setFetchRecipe(!fetchRecipe)}
+            className="Icon"
+          >
+            {fetchRecipe
+              ? <img data-testid="favorite-btn" src={blackHeartIcon} alt="favButton" />
+              : <img data-testid="favorite-btn" src={whiteHeartIcon} alt="favButton" />}
+          </button>
+          {linkCopie && <span>Link copiado!</span>}
         </div>
       </div>
       <section>
         <h5 className="Title-List" data-testid="recipe-category">{recipe.strCategory}</h5>
+        {<Ingredients value={recipe} />}
+        <p data-testid="instructions">{recipe.strInstructions}</p>
       </section>
-      {fetchRecipe && <Ingredients value={recipe} />}
       <div>
-        <iframe
-          data-testid="video"
-          width="560"
-          height="315"
-          src={recipe.strYoutube}
-          frameBorder="0"
-          allow="autoplay;encrypted-media"
-          allowFullScreen
-        />
+        {recipe.strYoutube === null
+          ? <span>No video to attemp</span>
+          : <ReactPlayer data-testid="video" url={recipe.strYoutube} />}
       </div>
+      <Recomendations type="cocktail" />
+      <button
+        className="Button-Login"
+      >
+        <Link
+          to={`/comidas/${id}/in-progress`}
+          data-testid="start-recipe-btn"
+        >
+          Inciar Receita
+        </Link>
+      </button>
     </div>
   );
 };
