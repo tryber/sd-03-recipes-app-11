@@ -10,7 +10,7 @@ function ComidasProvider({ children }) {
   const [recipe, setRecipe] = useState({});
   const [fetchRecipe, setFetchRecipe] = useState(false);
   const [categories, setCategories] = useState([]);
-  const [recomendations, setRecomendations] = useState([])
+  const [recomendations, setRecomendations] = useState([]);
 
   const store = {
     searchValue: search,

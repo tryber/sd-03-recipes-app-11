@@ -8,14 +8,16 @@ import RecomendationCard from './RecomendationsCard';
 const Recomendations = ({ type }) => {
   const { recomendations, setRecomendations } = useContext(ComidasContext);
   useEffect(() => {
-    if (type === 'meal') searchMealsByName('', type)
+    if (type === 'meal') { searchMealsByName('', type) 
       .then((data) => {
         setRecomendations((data.meals).slice(0, 6));
       });
-    if (type === 'cocktail') searchCocktailByName('')
+    }
+    if (type === 'cocktail') { searchCocktailByName('')
       .then((data) => {
-        setRecomendations((data.drinks).slice(0, 6))
+        setRecomendations((data.drinks).slice(0, 6));
       });
+    }
   }, []);
 
   const upperCase = {
@@ -27,11 +29,11 @@ const Recomendations = ({ type }) => {
     <div>
       <h2>Rec</h2>
       {recomendations.map((el, i) => (
-        <RecomendationCard key={el[`id${upperCase[type]}`]} recipe={el} index={i} type={type}/>
+        <RecomendationCard key={el[`id${upperCase[type]}`]} recipe={el} index={i} type={type} />
       ))}
     </div>
   );
-}
+};
 
 Recomendations.propTypes = {
   type: PropTypes.string.isRequired,

@@ -35,6 +35,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
         />
       </button>
       <button
+        name="favorite1"
         data-testid="favorite-btn"
         onClick={() => setFetchRecipe(!fetchRecipe)}
         className="Icon"
@@ -46,7 +47,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
       <h5 data-testid="recipe-category">{recipe.strAlcoholic}</h5>
       {<Ingredients value={recipe} />}
       <p data-testid="instructions">{recipe.strInstructions}</p>
-      <Recomendations type="meal"/>
+      <Recomendations type="meal" />
       <button
         data-testid="start-recipe-btn"
         className="Button-Login"

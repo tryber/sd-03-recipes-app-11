@@ -36,6 +36,7 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
         />
       </button>
       <button
+        name="favorite2"
         data-testid="favorite-btn"
         onClick={() => setFetchRecipe(!fetchRecipe)}
         className="Icon"
@@ -48,11 +49,11 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       {<Ingredients value={recipe} />}
       <p data-testid="instructions">{recipe.strInstructions}</p>
       <div>
-      {recipe.strYoutube === null
-        ? <span>No video to attemp</span>
-        : <ReactPlayer data-testid="video" url={recipe.strYoutube} />}
+        {recipe.strYoutube === null
+          ? <span>No video to attemp</span>
+          : <ReactPlayer data-testid="video" url={recipe.strYoutube} />}
       </div>
-      <Recomendations type="cocktail"/>
+      <Recomendations type="cocktail" />
       <button
         data-testid="start-recipe-btn"
         className="Button-Login"
