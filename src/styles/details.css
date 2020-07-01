@@ -1,4 +1,5 @@
-@media screen and ( max-width: 760px) {
+@media screen and ( max-width : 760px ) {
+
   .Container {
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.5);
   }
@@ -14,12 +15,9 @@
 .Description {
   align-items: center;
   display: flex;
+  font-size: 16pt;
   justify-content: space-between;
   max-width: 400px;
-}
-
-.Description h2 {
-  font-size: 22pt;
 }
 
 .Title-List {
