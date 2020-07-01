@@ -26,7 +26,6 @@ function Meals({ type, match }) {
 
   if (isFetching) return <Loading />;
   const { id } = match.params;
-  console.log(meals)
   return (
     <div>
       {!id && <Header search />}

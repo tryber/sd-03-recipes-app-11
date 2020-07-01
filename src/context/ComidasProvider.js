@@ -5,7 +5,7 @@ import ComidasContext from './ComidasContext';
 
 function ComidasProvider({ children }) {
   const [search, setSearch] = useState(false);
-  const [searchType, setSearchType] = useState({ type: '', meal: '', radio: '', },);
+  const [searchType, setSearchType] = useState({ type: '', meal: '', radio: '' });
   const [meals, setMeals] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
   const [recipe, setRecipe] = useState({});

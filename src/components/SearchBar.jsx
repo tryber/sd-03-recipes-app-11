@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RadioSelectors from './SearchBox/RadioSelectors';
 import '../styles/styles.css';
 import SearchInput from './SearchBox/SearchInput';
