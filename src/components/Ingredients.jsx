@@ -9,13 +9,13 @@ function Ingredients({ value: { ingredients } }) {
         key={el[0]}
         data-testid={`${index}-ingredient-name-and-measure`}
       >
-        {`${el[0]} - ${el[1]}`}
+        {`${el[0]} - ${el[1] || 'a gosto'}`}
       </p>));
 }
 
 Ingredients.propTypes = {
   value: PropTypes.shape({
-    ingredients: PropTypes.array.isRequired,
+    ingredients: PropTypes.array,
   }).isRequired,
 };
 

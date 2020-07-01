@@ -10,8 +10,8 @@ export function auxiliarFuncition(data) {
 export function filterIngredientsMeals(data) {
   return Object.entries(data)
     .reduce(({ ingredients, measure }, act) => {
-      if (act[0].includes('strIngredient') && act[1].length >= 1) ingredients.push(act[1]);
-      if (act[0].includes('strMeasure') && act[1].length >= 1) measure.push(act[1]);
+      if (act[0].includes('strIngredient') && act[1] && act[1].length >= 1) ingredients.push(act[1]);
+      if (act[0].includes('strMeasure') && act[1] && act[1].length >= 1) measure.push(act[1]);
       return { ingredients: [...ingredients], measure: [...measure] };
     }, { ingredients: [], measure: [] });
 }
@@ -19,8 +19,8 @@ export function filterIngredientsMeals(data) {
 export function filterIngredientsCockTails(data) {
   return Object.entries(data)
     .reduce(({ ingredients, measure }, act) => {
-      if (act[0].includes('strIngredient') && act[1] !== null) ingredients.push(act[1]);
-      if (act[0].includes('strMeasure') && act[1] !== null) measure.push(act[1]);
+      if (act[0].includes('strIngredient') && act[1] && act[1].length >= 1) ingredients.push(act[1]);
+      if (act[0].includes('strMeasure') && act[1] && act[1].length >= 1) measure.push(act[1]);
       return { ingredients: [...ingredients], measure: [...measure] };
     }, { ingredients: [], measure: [] });
 }
