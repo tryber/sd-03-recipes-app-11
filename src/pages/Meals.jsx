@@ -1,13 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { searchMealsByName } from '../services/requestMealApi';
-import Header from './Header';
-import Footer from './Footer';
-import SearchBar from './SearchBar';
-import MealsCard from './MealsCard';
-import Loading from './Loading';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import SearchBar from '../components/SearchBar';
+import MealsCard from '../components/MealsCard';
+import Loading from '../components/Loading';
 import ComidasContext from '../context/ComidasContext';
 import '../styles/styles.css';
+import MealsCategorys from '../components/MealsCategorys';
 
 function Meals({ type, match }) {
   const { searchValue, meals, setMeals, isFetching, setIsFetching } = useContext(ComidasContext);
@@ -16,7 +17,7 @@ function Meals({ type, match }) {
       setMeals((data.meals || data.drinks).slice(0, 12));
       setIsFetching(false);
     });
-  }, [type]);
+  }, [setMeals, setIsFetching, type]);
 
   const upperCase = {
     meal: 'Meal',
@@ -25,10 +26,14 @@ function Meals({ type, match }) {
 
   if (isFetching) return <Loading />;
   const { id } = match.params;
+  console.log(meals)
   return (
     <div>
       {!id && <Header search />}
       {searchValue && <SearchBar />}
+      <div>
+        <MealsCategorys type={type} />
+      </div>
       <div className="Map">
         {meals.map((meal, index) => (
           <MealsCard key={meal[`id${upperCase[type]}`]} recipe={meal} index={index} type={type} />

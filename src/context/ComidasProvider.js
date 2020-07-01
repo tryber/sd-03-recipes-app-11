@@ -8,6 +8,9 @@ function ComidasProvider({ children }) {
   const [searchType, setSearchType] = useState({ type: '', meal: '', radio: '', },);
   const [meals, setMeals] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
+  const [recipe, setRecipe] = useState({});
+  const [fetchRecipe, setFetchRecipe] = useState(false);
+  const [categories, setCategories] = useState([]);
 
   const store = {
     searchValue: search,
@@ -18,6 +21,13 @@ function ComidasProvider({ children }) {
     setMeals,
     isFetching,
     setIsFetching,
+    recipe,
+    setRecipe,
+    fetchRecipe,
+    setFetchRecipe,
+    categories,
+    setCategories,
+
   };
 
   return (
