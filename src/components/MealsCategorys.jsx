@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { searchAllMealCategoriesDetails, searchMealByCategory } from '../services/requestMealApi';
+import { searchAllMealCategoriesDetails, searchMealByCategory, searchMealsByName } from '../services/requestMealApi';
 import ComidasContext from '../context/ComidasContext';
 import Loading from './Loading';
 
 function MealsCategorys({ type }) {
+  const [filter, setFilter] = useState('');
   const { categories, setCategories, isFetching, setIsFetching, setMeals } = useContext(
     ComidasContext,
   );
@@ -16,22 +17,36 @@ function MealsCategorys({ type }) {
     });
   }, [setCategories, setIsFetching, type]);
 
-  const onHandlelistMealsByCategory = (category) => {
-    searchMealByCategory(category, type).then((data) =>
-      setMeals((data.meals || data.drinks).slice(0, 12)),
-    );
+  useEffect(() => {
+    if (filter) {
+      searchMealByCategory(filter, type)
+      .then((data) => setMeals((data.drinks || data.meals).slice(0, 12)));
+    } else {
+      searchMealsByName('', type)
+      .then((data) => setMeals((data.drinks || data.meals).slice(0, 12)));
+    }
+  }, [filter, setMeals, type]);
+
+  const handleClick = (category) => {
+    if (category === 'All' || category === filter) setFilter('');
+    else setFilter(category);
   };
 
   if (isFetching) return <Loading />;
   return (
     <div>
-      <button type="button">All</button>
+      <button
+        type="button"
+        data-testid="All-category-filter"
+        onClick={(e) => handleClick(e.target.innerHTML)}
+      >All
+        </button>
       {categories.map((category) => (
         <button
+          key={category.strCategory}
           type="button"
           data-testid={`${category.strCategory}-category-filter`}
-          onClick={() => onHandlelistMealsByCategory(category.strCategory)}
-          key={category.strCategory}
+          onClick={(e) => handleClick(e.target.innerHTML)}
         >
           {category.strCategory}
         </button>
