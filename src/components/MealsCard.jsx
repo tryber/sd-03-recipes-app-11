@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import ComidasContext from '../context/ComidasContext';
 
 const MealsCard = ({ recipe, index, type }) => {
   const stringsObj = {
     meal: ['comidas', 'Meal'],
     cocktail: ['bebidas', 'Drink'],
   };
-  
+
   return (
     <Link to={`/${stringsObj[type][0]}/${recipe[`id${stringsObj[type][1]}`]}`}>
       <div data-testid={`${index}-recipe-card`}>

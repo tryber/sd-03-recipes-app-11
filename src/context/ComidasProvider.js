@@ -11,7 +11,7 @@ function ComidasProvider({ children }) {
   const [fetchRecipe, setFetchRecipe] = useState(false);
   const [categories, setCategories] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
-  const [linkCopie, setLinkCopie] = useState(false)
+  const [linkCopie, setLinkCopie] = useState(false);
 
   const store = {
     searchValue: search,

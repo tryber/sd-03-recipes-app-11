@@ -38,11 +38,12 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
         alt={`${recipe.strDrink}`}
       />
       <Clipboard
+        name="CopieMealLink"
         data-testid="share-btn"
         className="Icon"
         onClick={() => {
-          navigator.clipboard.writeText(window.location.href)
-          setLinkCopie(true)
+          navigator.clipboard.writeText(window.location.href);
+          setLinkCopie(true);
         }}
       >
         <img
@@ -67,7 +68,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
       <Recomendations type="meal" />
       <button
         className="Button-Login"
-        >
+      >
         <Link
           to={`/bebidas/${id}/in-progress`}
           data-testid="start-recipe-btn"

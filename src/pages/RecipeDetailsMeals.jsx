@@ -39,11 +39,12 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
         alt={`${recipe.strMeal}`}
       />
       <Clipboard
+        name="CopieMealLink"
         data-testid="share-btn"
         className="Icon"
         onClick={() => {
-          navigator.clipboard.writeText(window.location.href)
-          setLinkCopie(true)
+          navigator.clipboard.writeText(window.location.href);
+          setLinkCopie(true);
         }}
       >
         <img
@@ -74,9 +75,10 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       <button
         className="Button-Login"
       >
-        <Link to={`/comidas/${id}/in-progress`}
+        <Link
+          to={`/comidas/${id}/in-progress`}
           data-testid="start-recipe-btn"
-          >
+        >
           Inciar Receita
         </Link>
       </button>
