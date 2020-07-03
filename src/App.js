@@ -5,6 +5,7 @@ import Meals from './pages/Meals';
 import ComidasProvider from './context/ComidasProvider';
 import Perfil from './pages/Perfil';
 import Explorar from './pages/Explorar';
+import MealsExplorer from './pages/MealsExplorer';
 import RecipeDetailsMeals from './pages/RecipeDetailsMeals';
 import RecipeDetailsCockTails from './pages/RecipeDetailsCockTails';
 
@@ -29,8 +30,16 @@ function App() {
             />
             <Route exact path="/bebidas/:id/in-progress" />
             <Route exact path="/explorar" component={Explorar} />
-            <Route exact path="/explorar/comidas" component={Explorar} />
-            <Route exact path="/explorar/bebidas" component={Explorar} />
+            <Route
+              exact
+              path="/explorar/comidas"
+              render={(props) => <MealsExplorer {...props} type="meal" />}
+            />
+            <Route
+              exact
+              path="/explorar/bebidas"
+              render={(props) => <MealsExplorer {...props} type="cocktail" />}
+            />
             <Route exact path="/explorar/comidas/ingredientes" />
             <Route exact path="/explorar/bebidas/ingredientes" />
             <Route exact path="/explorar/comidas/area" />
