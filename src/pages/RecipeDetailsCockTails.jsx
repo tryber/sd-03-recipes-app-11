@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Clipboard from 'react-clipboard.js';
 import { Link } from 'react-router-dom';
-import { lookupFullCocktailDetailsById } from '../services/requestCocktailApi';
+import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import { filterIngredientsCockTails, auxiliarFuncition } from '../services/filterIngredients';
 import ComidasContext from '../context/ComidasContext';
 import shareIcon from '../images/shareIcon.svg';
@@ -18,7 +18,7 @@ import ShowIngredients from '../components/Ingredients/ShowIngredients';
 //     : <Ingredients value={recipe} />;
 // };
 
-const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
+const RecipeDetailsCockTails = ({ match: { params: { id } }, type }) => {
   const iniciouReceita = window.location.pathname.includes(`${id}/in-progress`);
   const {
     recipe,
@@ -29,13 +29,13 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
     setLinkCopie,
   } = useContext(ComidasContext);
   useEffect(() => {
-    lookupFullCocktailDetailsById(id)
+    lookupFullMealDetailsById(id, type)
       .then((data) => {
         const allIngredients = filterIngredientsCockTails({ ...data.drinks[0] });
         const filteredAllIngredients = auxiliarFuncition(allIngredients);
         setRecipe({ ...data.drinks[0], ingredients: filteredAllIngredients });
       });
-  }, []);
+  }, [id]);
   return (
     <section>
       <div>
@@ -95,7 +95,13 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
   );
 };
 
+RecipeDetailsCockTails.defaultProps = {
+  type: '',
+  id: 0,
+};
+
 RecipeDetailsCockTails.propTypes = {
+  type: PropTypes.string,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
