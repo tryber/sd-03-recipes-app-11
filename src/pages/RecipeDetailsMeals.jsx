@@ -9,11 +9,18 @@ import { filterIngredientsMeals, auxiliarFuncition } from '../services/filterIng
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
-import Ingredients from '../components/Ingredients';
 import Recomendations from '../components/Recomendations';
 import '../styles/details.css';
+import ShowIngredients from '../components/Ingredients/ShowIngredients';
+
+// const showIngredients = (recipe, iniciouReceita) => {
+//   return iniciouReceita && recipe.ingredients
+//     ? recipe.ingredients.map((el) => <IngredientsCheckBox el={el} id={Math.random()} />)
+//     : <Ingredients value={recipe} />;
+// };
 
 const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
+  const iniciouReceita = window.location.pathname.includes(`${id}/in-progress`);
   const {
     recipe,
     setRecipe,
@@ -67,7 +74,7 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       </div>
       <section>
         <h5 className="Title-List" data-testid="recipe-category">{recipe.strCategory}</h5>
-        {<Ingredients value={recipe} />}
+        {ShowIngredients(recipe, iniciouReceita)}
         <p className="Instruction" data-testid="instructions">{recipe.strInstructions}</p>
       </section>
       <div className="Video">
@@ -81,11 +88,11 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
           to={`/comidas/${id}/in-progress`}
         >
           <button
-            data-testid="start-recipe-btn"
+            data-testid={`${iniciouReceita ? 'finish-recipe-btn' : 'start-recipe-btn'}`}
             className="Button-Progresse"
           >
-            Inciar Receita
-        </button>
+            {iniciouReceita ? 'Finalizar Receita' : 'Iniciar Receita'}
+          </button>
         </Link>
       </div>
     </div>

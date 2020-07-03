@@ -5,14 +5,21 @@ import { Link } from 'react-router-dom';
 import { lookupFullCocktailDetailsById } from '../services/requestCocktailApi';
 import { filterIngredientsCockTails, auxiliarFuncition } from '../services/filterIngredients';
 import ComidasContext from '../context/ComidasContext';
-import Ingredients from '../components/Ingredients';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Recomendations from '../components/Recomendations';
 import '../styles/details.css';
+import ShowIngredients from '../components/Ingredients/ShowIngredients';
+
+// const showIngredients = (recipe, iniciouReceita) => {
+//   return iniciouReceita && recipe.ingredients
+//     ? recipe.ingredients.map((el) => <IngredientsCheckBox el={el} id={Math.random()} />)
+//     : <Ingredients value={recipe} />;
+// };
 
 const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
+  const iniciouReceita = window.location.pathname.includes(`${id}/in-progress`);
   const {
     recipe,
     setRecipe,
@@ -68,7 +75,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
       </div>
       <section>
         <h5 className="Title-List" data-testid="recipe-category">{recipe.strAlcoholic}</h5>
-        {<Ingredients value={recipe} />}
+        {ShowIngredients(recipe, iniciouReceita)}
         <p data-testid="instructions">{recipe.strInstructions}</p>
       </section>
       <Recomendations type="meal" />
@@ -77,11 +84,11 @@ const RecipeDetailsCockTails = ({ match: { params: { id } } }) => {
           to={`/bebidas/${id}/in-progress`}
         >
           <button
-            data-testid="start-recipe-btn"
+            data-testid={`${iniciouReceita ? 'finish-recipe-btn' : 'start-recipe-btn'}`}
             className="Button-Progresse"
           >
-            Iniciar Receita
-      </button>
+            {iniciouReceita ? 'Finalizar Receita' : 'Iniciar Receita'}
+          </button>
         </Link>
       </div>
     </section>
