@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ComidasContext from './ComidasContext';
-
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 function ComidasProvider({ children }) {
   const [search, setSearch] = useState(false);
@@ -9,7 +9,6 @@ function ComidasProvider({ children }) {
   const [meals, setMeals] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
   const [recipe, setRecipe] = useState({});
-  const [FavDesFav, setFav] = useState(false);
   const [categories, setCategories] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
   const [linkCopie, setLinkCopie] = useState(false);
@@ -25,8 +24,6 @@ function ComidasProvider({ children }) {
     setIsFetching,
     recipe,
     setRecipe,
-    FavDesFav,
-    setFav,
     categories,
     setCategories,
     recomendations,
