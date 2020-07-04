@@ -7,6 +7,7 @@ import Perfil from './pages/Perfil';
 import Explorar from './pages/Explorar';
 import RecipeDetailsMeals from './pages/RecipeDetailsMeals';
 import RecipeDetailsCockTails from './pages/RecipeDetailsCockTails';
+import DoneRecipes from './pages/DoneRecipes';
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
             <Route exact path="/explorar/bebidas/ingredientes" />
             <Route exact path="/explorar/comidas/area" />
             <Route exact path="/perfil" component={Perfil} />
-            <Route exact path="/receitas-feitas" />
+            <Route exact path="/receitas-feitas" component={DoneRecipes}/>
             <Route exact path="/receitas-favoritas" />
           </ComidasProvider>
         </Switch>

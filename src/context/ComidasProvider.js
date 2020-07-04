@@ -9,7 +9,7 @@ function ComidasProvider({ children }) {
   const [meals, setMeals] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
   const [recipe, setRecipe] = useState({});
-  const [fetchRecipe, setFetchRecipe] = useState(false);
+  const [FavDesFav, setFav] = useState(false);
   const [categories, setCategories] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
   const [linkCopie, setLinkCopie] = useState(false);
@@ -25,8 +25,8 @@ function ComidasProvider({ children }) {
     setIsFetching,
     recipe,
     setRecipe,
-    fetchRecipe,
-    setFetchRecipe,
+    FavDesFav,
+    setFav,
     categories,
     setCategories,
     recomendations,
