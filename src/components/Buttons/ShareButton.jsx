@@ -3,7 +3,7 @@ import shareIcon from '../../images/shareIcon.svg';
 import ComidasContext from '../../context/ComidasContext';
 
 const ShareButton = () => {
-  const { setLinkCopie } = useContext(ComidasContext)  
+  const { setLinkCopie } = useContext(ComidasContext);
   return (
     <button
       name="CopieCocktailLink"
@@ -19,6 +19,6 @@ const ShareButton = () => {
       />
     </button>
   );
-}
+};
 
 export default ShareButton;

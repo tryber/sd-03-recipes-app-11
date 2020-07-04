@@ -38,7 +38,7 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
         <div>
           <ShareButton />
           {linkCopie && <span>Link copiado!</span>}
-          <FavoriteButton data={recipe} type="meal"/>
+          <FavoriteButton data={recipe} type="meal" />
         </div>
       </div>
       <section>

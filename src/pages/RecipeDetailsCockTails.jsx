@@ -37,9 +37,9 @@ const RecipeDetailsCockTails = ({ match: { params: { id } }, type }) => {
       <div className="Description">
         <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
         <div>
-        <ShareButton />
-        {linkCopie && <span>Link copiado!</span>}
-        <FavoriteButton data={recipe} type="cocktail"/>
+          <ShareButton />
+          {linkCopie && <span>Link copiado!</span>}
+          <FavoriteButton data={recipe} type="cocktail" />
         </div>
       </div>
       <section>

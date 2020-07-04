@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 
 const saveFavoriteMeal = (recipe, setFav) => {
-  const { idMeal, strArea, strCategory, strMeal, strMealThumb} = recipe;
+  const { idMeal, strArea, strCategory, strMeal, strMealThumb } = recipe;
   const newFavorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
   const favoriteIndex = newFavorites.findIndex((el) => el.id === recipe.idMeal);
   if (favoriteIndex === -1) {
@@ -17,16 +18,16 @@ const saveFavoriteMeal = (recipe, setFav) => {
       image: strMealThumb,
     });
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
-    setFav(blackHeartIcon)
+    setFav(blackHeartIcon);
   } else {
     newFavorites.splice(favoriteIndex, 1);
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
-    setFav(whiteHeartIcon)
+    setFav(whiteHeartIcon);
   }
 };
 
 const saveFavoriteCocktail = (recipe, setFav) => {
-  const { idDrink, strCategory, strAlcoholic, strDrink, strDrinkThumb } = recipe
+  const { idDrink, strCategory, strAlcoholic, strDrink, strDrinkThumb } = recipe;
   const newFavorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
   const favoriteIndex = newFavorites.findIndex((el) => el.id === recipe.idDrink);
   if (favoriteIndex === -1) {
@@ -44,7 +45,7 @@ const saveFavoriteCocktail = (recipe, setFav) => {
   } else {
     newFavorites.splice(favoriteIndex, 1);
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
-    setFav(whiteHeartIcon)
+    setFav(whiteHeartIcon);
   }
 };
 
@@ -57,16 +58,26 @@ const FavoriteButton = ({ data, type }) => {
       setFav(blackHeartIcon);
     }
   }, [data]);
-  return (  
+  return (
     <button
       onClick={() => {
-        if(type === 'meal') saveFavoriteMeal(data, setFav)
-        if(type === 'cocktail') saveFavoriteCocktail(data, setFav)
+        if (type === 'meal') saveFavoriteMeal(data, setFav);
+        if (type === 'cocktail') saveFavoriteCocktail(data, setFav);
       }}
     >
       <img data-testid="favorite-btn" src={FavDesFav} alt="favorite-btn" />
     </button>
   );
 };
+
+FavoriteButton.propTypes = {
+  data: PropTypes.object,
+  type: PropTypes.string,
+};
+
+FavoriteButton.defaultProps = {
+  data: {},
+  type: '',
+}
 
 export default FavoriteButton;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ComidasContext from './ComidasContext';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 function ComidasProvider({ children }) {
   const [search, setSearch] = useState(false);
