@@ -41,7 +41,7 @@ const saveFavoriteCocktail = (recipe, setFav) => {
       image: strDrinkThumb,
     });
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
-    setFav(blackHeartIcon)
+    setFav(blackHeartIcon);
   } else {
     newFavorites.splice(favoriteIndex, 1);
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
@@ -71,13 +71,13 @@ const FavoriteButton = ({ data, type }) => {
 };
 
 FavoriteButton.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.shape(),
   type: PropTypes.string,
 };
 
 FavoriteButton.defaultProps = {
   data: {},
   type: '',
-}
+};
 
 export default FavoriteButton;
