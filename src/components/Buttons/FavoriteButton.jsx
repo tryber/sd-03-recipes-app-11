@@ -10,7 +10,7 @@ const saveFavoriteMeal = (recipe, setFav, setMap) => {
   const favoriteIndex = newFavorites.findIndex((el) => el.id === recipe.idMeal);
   if (favoriteIndex === -1) {
     newFavorites.push({
-      id: idMeal,
+      id: idMeal || '',
       type: 'comida',
       area: strArea,
       category: strCategory,
@@ -53,9 +53,8 @@ const saveFavoriteCocktail = (recipe, setFav, setMap) => {
 };
 
 const FavoriteButton = ({ data, type, local, index }) => {
-  console.log(data)
   const [FavDesFav, setFav] = useState(whiteHeartIcon);
-  const { setMap } = useContext(ComidasContext)
+  const { setMap } = useContext(ComidasContext);
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
     if (data.length !== 0 && favorites
@@ -71,7 +70,7 @@ const FavoriteButton = ({ data, type, local, index }) => {
       }}
     >
       <img
-        data-testid={local ? `${index}-horizontal-favorite-btn` : "favorite-btn"}
+        data-testid={local ? `${index}-horizontal-favorite-btn` : 'favorite-btn'}
         src={FavDesFav}
         alt="favorite-btn"
       />
@@ -90,7 +89,7 @@ FavoriteButton.defaultProps = {
   data: {},
   type: '',
   local: false,
-  index: null
+  index: null,
 };
 
 export default FavoriteButton;

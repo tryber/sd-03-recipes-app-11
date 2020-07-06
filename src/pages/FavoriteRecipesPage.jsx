@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useContext} from 'react';
+import React, { useEffect, useContext } from 'react';
 import FavoriteFilters from '../components/FavoriteFilters';
 import Header from '../components/Header';
 import Favorites from '../components/Favorites';
 import ComidasContext from '../context/ComidasContext';
 
 const FavoriteRecipesPage = () => {
-  const { mapDefine } = useContext(ComidasContext)
+  const { mapDefine } = useContext(ComidasContext);
   useEffect(() => {
-    
+    console.log('S2 codeClimte');
   }, [mapDefine]);
   return (
     <div>
