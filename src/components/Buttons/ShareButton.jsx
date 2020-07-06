@@ -2,18 +2,22 @@ import React, { useContext } from 'react';
 import shareIcon from '../../images/shareIcon.svg';
 import ComidasContext from '../../context/ComidasContext';
 
-const ShareButton = () => {
+const ShareButton = ({ local, index , id, type}) => {
   const { setLinkCopie } = useContext(ComidasContext);
   return (
     <button
       name="CopieCocktailLink"
-      data-testid="share-btn"
       onClick={() => {
-        navigator.clipboard.writeText(window.location.href);
+        if (type === 'comidas' || type === 'bebidas') {
+          navigator.clipboard.writeText(`http://localhost:3000/${type}/${id}`);
+        } else {
+          navigator.clipboard.writeText(window.location.href);
+        }
         setLinkCopie(true);
       }}
     >
       <img
+        data-testid={local ? `${index}-horizontal-share-btn` : "share-btn"}
         src={shareIcon}
         alt="share button"
       />

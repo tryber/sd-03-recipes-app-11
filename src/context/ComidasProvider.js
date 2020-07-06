@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ComidasContext from './ComidasContext';
 
 function ComidasProvider({ children }) {
+  const favoriteMap = JSON.parse(localStorage.getItem('favoriteRecipes'));
   const [search, setSearch] = useState(false);
   const [searchType, setSearchType] = useState({ type: '', meal: '', radio: '' });
   const [meals, setMeals] = useState([]);
@@ -11,6 +12,7 @@ function ComidasProvider({ children }) {
   const [categories, setCategories] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
   const [linkCopie, setLinkCopie] = useState(false);
+  const [mapDefine, setMap] = useState(favoriteMap);
 
   const store = {
     searchValue: search,
@@ -29,6 +31,8 @@ function ComidasProvider({ children }) {
     setRecomendations,
     linkCopie,
     setLinkCopie,
+    mapDefine,
+    setMap,
   };
 
   return (

@@ -10,6 +10,7 @@ import RecipeDetailsMeals from './pages/RecipeDetailsMeals';
 import RecipeDetailsCockTails from './pages/RecipeDetailsCockTails';
 import MealsExplorerByIngredients from './pages/MealsExplorerByIngredients';
 import MealsExplorerByArea from './pages/MealsExplorerByArea';
+import FavoriteRecipesPage from './pages/FavoriteRecipesPage';
 
 const MealsRoutes = () => (
   <Switch>
@@ -120,6 +121,7 @@ const DoneRecipesRoutes = () => (
     <Route
       exact
       path="/receitas-favoritas"
+      component={FavoriteRecipesPage}
     />
   </Switch>
 );
