@@ -26,6 +26,8 @@ const headerTitle = (history) => {
       return 'Explorar Bebidas';
     case '/receitas-feitas':
       return 'Receitas Feitas';
+    case '/receitas-favoritas':
+      return 'Receitas Favoritas';
     case '/perfil':
       return 'Perfil';
     default:

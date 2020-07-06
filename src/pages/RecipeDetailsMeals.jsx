@@ -1,26 +1,21 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
-import Clipboard from 'react-clipboard.js';
 import { Link } from 'react-router-dom';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import ComidasContext from '../context/ComidasContext';
 import { filterIngredientsMeals, auxiliarFuncition } from '../services/filterIngredients';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Ingredients from '../components/Ingredients';
 import Recomendations from '../components/Recomendations';
 import '../styles/details.css';
+import ShareButton from '../components/Buttons/ShareButton';
+import FavoriteButton from '../components/Buttons/FavoriteButton';
 
 const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   const {
     recipe,
     setRecipe,
-    fetchRecipe,
-    setFetchRecipe,
     linkCopie,
-    setLinkCopie,
   } = useContext(ComidasContext);
   useEffect(() => {
     lookupFullMealDetailsById(id, type)
@@ -41,28 +36,9 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       <div className="Description">
         <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
         <div>
-          <Clipboard
-            name="CopieMealLink"
-            data-testid="share-btn"
-            onClick={() => {
-              navigator.clipboard.writeText(window.location.href);
-              setLinkCopie(true);
-            }}
-          >
-            <img
-              src={shareIcon}
-              alt="share button"
-            />
-          </Clipboard>
-          <button
-            name="favorite2"
-            onClick={() => setFetchRecipe(!fetchRecipe)}
-          >
-            {fetchRecipe
-              ? <img data-testid="favorite-btn" src={blackHeartIcon} alt="favButton" />
-              : <img data-testid="favorite-btn" src={whiteHeartIcon} alt="favButton" />}
-          </button>
+          <ShareButton />
           {linkCopie && <span>Link copiado!</span>}
+          <FavoriteButton data={recipe} type="meal" />
         </div>
       </div>
       <section>
