@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import ShareButtoon from '../components/Buttons/ShareButton';
 import FavoriteButton from '../components/Buttons/FavoriteButton';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import ComidasContext from '../context/ComidasContext';
-import { Link } from 'react-router-dom';
 
 const MealCardFavorite = (recipe, index) => {
   const [testRicepe, setRecipeTest] = useState({});
@@ -64,12 +64,12 @@ const CockTailCardFavorite = (recipe, index) => {
           height="50"
           src={image}
           alt="recipe"
-          />
+        />
       </Link>
       <p data-testid={`${index}-horizontal-top-text`}>
         {alcoholicOrNot}
       </p>
-      <Link to={`/bebidas/${id}`}> 
+      <Link to={`/bebidas/${id}`}>
         <h3 data-testid={`${index}-horizontal-name`}>
           {name}
         </h3>

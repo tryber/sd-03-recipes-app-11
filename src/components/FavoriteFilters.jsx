@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import ComidasContext from '../context/ComidasContext';
 
 const Allbutton = ({ localstorageAll, setlocalstorageAll }) => (
-    <button
-      data-testid="filter-by-all-btn"
-      onClick={() => setlocalstorageAll(localstorageAll)}
-    >
-      All
-    </button>
+  <button
+    data-testid="filter-by-all-btn"
+    onClick={() => setlocalstorageAll(localstorageAll)}
+  >
+    All
+  </button>
 );
 
 const FoodButton = ({ localstorageFood, setlocalstorageFood }) => {
@@ -39,7 +39,7 @@ const DrinksButton = ({ localstorageDrinks, setlocalstorageDrinks }) => {
 
 const FavoriteFilters = () => {
   const { setMap } = useContext(ComidasContext);
-  const mainStorage = JSON.parse(localStorage.getItem('favoriteRecipes'))
+  const mainStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
   return (
     <div>
       <Allbutton localstorageAll={mainStorage} setlocalstorageAll={setMap} />
@@ -50,17 +50,17 @@ const FavoriteFilters = () => {
 };
 
 Allbutton.propTypes = {
-  localstorageAll: PropTypes.array.isRequired,
+  localstorageAll: PropTypes.arrayOf.isRequired,
   setlocalstorageAll: PropTypes.func.isRequired,
 };
 
 FoodButton.propTypes = {
-  localstorageFood: PropTypes.array.isRequired,
+  localstorageFood: PropTypes.arrayOf().isRequired,
   setlocalstorageFood: PropTypes.func.isRequired,
 };
 
 DrinksButton.propTypes = {
-  localstorageDrinks: PropTypes.array.isRequired,
+  localstorageDrinks: PropTypes.arrayOf().isRequired,
   setlocalstorageDrinks: PropTypes.func.isRequired,
 };
 
