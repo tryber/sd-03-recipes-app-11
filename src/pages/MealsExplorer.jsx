@@ -49,9 +49,7 @@ export default function MealsExplorer({ type }) {
       </section>
       <Footer />
     </div>
-  ) : (
-      <Loading />
-    );
+  ) : <Loading />;
 }
 
 MealsExplorer.propTypes = {

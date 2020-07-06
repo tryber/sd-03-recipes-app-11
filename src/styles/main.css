@@ -47,10 +47,10 @@
 }
 
 .Category button {
-  text-align: center;
   font-size: 11pt;
   height: 50px;
   margin: 10px 5px;
+  text-align: center;
   width: 120px;
 }
 
