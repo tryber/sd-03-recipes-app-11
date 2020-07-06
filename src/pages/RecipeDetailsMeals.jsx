@@ -12,12 +12,19 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Recomendations from '../components/Recomendations';
 import '../styles/details.css';
 import ShowIngredients from '../components/Ingredients/ShowIngredients';
+import { mealOrCocktail, localObject } from '../components/Ingredients/IngredientsCheckBox';
 
-// const showIngredients = (recipe, iniciouReceita) => {
-//   return iniciouReceita && recipe.ingredients
-//     ? recipe.ingredients.map((el) => <IngredientsCheckBox el={el} id={Math.random()} />)
-//     : <Ingredients value={recipe} />;
-// };
+
+const aoCarregar = (id) => {
+  if (!localObject) {
+    const objeto = {
+      cocktails: {},
+      meals: {},
+    };
+    objeto[mealOrCocktail][id] = [];
+    localStorage.setItem('inProgressRecipes', JSON.stringify(objeto));
+  }
+};
 
 const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   const iniciouReceita = window.location.pathname.includes(`${id}/in-progress`);
@@ -29,6 +36,8 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
     linkCopie,
     setLinkCopie,
   } = useContext(ComidasContext);
+
+  aoCarregar(id);
   useEffect(() => {
     lookupFullMealDetailsById(id, type)
       .then((data) => {

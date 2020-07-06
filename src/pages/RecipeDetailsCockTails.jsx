@@ -12,12 +12,6 @@ import Recomendations from '../components/Recomendations';
 import '../styles/details.css';
 import ShowIngredients from '../components/Ingredients/ShowIngredients';
 
-// const showIngredients = (recipe, iniciouReceita) => {
-//   return iniciouReceita && recipe.ingredients
-//     ? recipe.ingredients.map((el) => <IngredientsCheckBox el={el} id={Math.random()} />)
-//     : <Ingredients value={recipe} />;
-// };
-
 const RecipeDetailsCockTails = ({ match: { params: { id } }, type }) => {
   const iniciouReceita = window.location.pathname.includes(`${id}/in-progress`);
   const {

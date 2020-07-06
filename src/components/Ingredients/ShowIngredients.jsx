@@ -4,10 +4,10 @@ import Ingredients from './Ingredients';
 
 function ShowIngredients(recipe, iniciouReceita) {
   const id = window.location.pathname.includes('bebidas') ? recipe.idDrink : recipe.idMeal;
-  console.log(id);
-  return iniciouReceita && recipe.ingredients
-    ? recipe.ingredients.map((el, i) => <IngredientsCheckBox el={el} id={i} recipeId={id} />)
-    : <Ingredients value={recipe} />;
+  if (iniciouReceita && recipe.ingredients) {
+    return recipe.ingredients.map((el, i) => <IngredientsCheckBox el={el} id={i} recipeId={id} />);
+  }
+  return <Ingredients value={recipe} />;
 }
 
 export default ShowIngredients;

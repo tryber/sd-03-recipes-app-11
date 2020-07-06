@@ -50,6 +50,7 @@ const InProgressRoutes = () => (
   <Switch>
     <Route
       exact
+      path="/bebidas/:id/in-progress"
       render={(props) => <RecipeDetailsCockTails {...props} type="cocktail" />}
     />
     <Route
@@ -138,8 +139,6 @@ const LoginRoutes = () => (
     />
   </Switch>
 );
-
-
 
 function App() {
   return (
