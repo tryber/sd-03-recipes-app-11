@@ -27,10 +27,17 @@ const ShareButton = ({ local, index, id, type }) => {
 };
 
 ShareButton.propTypes = {
-  local: PropTypes.bool.isRequired,
-  index: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  local: PropTypes.bool,
+  index: PropTypes.number,
+  id: PropTypes.string,
+  type: PropTypes.string,
+};
+
+ShareButton.defaultProps = {
+  local: false,
+  index: -1,
+  id: '00000',
+  type: 'none',
 };
 
 export default ShareButton;

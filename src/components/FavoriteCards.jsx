@@ -3,6 +3,7 @@ import ShareButtoon from '../components/Buttons/ShareButton';
 import FavoriteButton from '../components/Buttons/FavoriteButton';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import ComidasContext from '../context/ComidasContext';
+import { Link } from 'react-router-dom';
 
 const MealCardFavorite = (recipe, index) => {
   const [testRicepe, setRecipeTest] = useState({});
@@ -16,19 +17,23 @@ const MealCardFavorite = (recipe, index) => {
   }, []);
   return (
     <div>
-      <img
-        height="50"
-        width="50"
-        src={image}
-        alt="recipe"
-        data-testid={`${index}-horizontal-image`}
-      />
+      <Link to={`/comidas/${id}`}>
+        <img
+          height="50"
+          width="50"
+          src={image}
+          alt="recipe"
+          data-testid={`${index}-horizontal-image`}
+        />
+      </Link>
       <p data-testid={`${index}-horizontal-top-text`}>
         {`${area} - ${category}`}
       </p>
-      <h3 data-testid={`${index}-horizontal-name`}>
-        {name}
-      </h3>
+      <Link to={`/comidas/${id}`}>
+        <h3 data-testid={`${index}-horizontal-name`}>
+          {name}
+        </h3>
+      </Link>
       <ShareButtoon local index={index} type="comidas" id={id} />
       {testRicepe.idMeal && <FavoriteButton
         data={testRicepe}
@@ -52,19 +57,23 @@ const CockTailCardFavorite = (recipe, index) => {
   }, []);
   return (
     <div>
-      <img
-        data-testid={`${index}-horizontal-image`}
-        width="50"
-        height="50"
-        src={image}
-        alt="recipe"
-      />
+      <Link to={`/bebidas/${id}`}>
+        <img
+          data-testid={`${index}-horizontal-image`}
+          width="50"
+          height="50"
+          src={image}
+          alt="recipe"
+          />
+      </Link>
       <p data-testid={`${index}-horizontal-top-text`}>
         {alcoholicOrNot}
       </p>
-      <h3 data-testid={`${index}-horizontal-name`}>
-        {name}
-      </h3>
+      <Link to={`/bebidas/${id}`}> 
+        <h3 data-testid={`${index}-horizontal-name`}>
+          {name}
+        </h3>
+      </Link>
       <ShareButtoon local index={index} type="bebidas" id={id} />
       {testRicepeCock.idDrink && <FavoriteButton
         data={testRicepeCock}
