@@ -12,7 +12,7 @@ const FavoriteRecipesPage = () => {
   return (
     <div>
       <Header />
-      <FavoriteFilters />
+      {mapDefine && <FavoriteFilters />}
       {!!mapDefine && <Favorites data={mapDefine} />}
     </div>
   );
