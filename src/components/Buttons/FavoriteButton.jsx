@@ -6,10 +6,10 @@ import ComidasContext from '../../context/ComidasContext';
 
 const saveFavoriteMeal = (recipe, setFav, setMap) => {
   const { idMeal, strArea, strCategory, strMeal, strMealThumb } = recipe;
-  const newFavorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-  const favoriteIndex = newFavorites.findIndex((el) => el.id === recipe.idMeal);
+  const newFavoritesMeal = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+  const favoriteIndex = newFavoritesMeal.findIndex((el) => el.id === recipe.idMeal);
   if (favoriteIndex === -1) {
-    newFavorites.push({
+    newFavoritesMeal.push({
       id: idMeal || '',
       type: 'comida',
       area: strArea,
@@ -18,22 +18,22 @@ const saveFavoriteMeal = (recipe, setFav, setMap) => {
       name: strMeal,
       image: strMealThumb,
     });
-    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
+    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoritesMeal));
     setFav(blackHeartIcon);
   } else {
-    newFavorites.splice(favoriteIndex, 1);
-    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
+    newFavoritesMeal.splice(favoriteIndex, 1);
+    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoritesMeal));
     setFav(whiteHeartIcon);
-    setMap(newFavorites);
+    setMap(newFavoritesMeal);
   }
 };
 
 const saveFavoriteCocktail = (recipe, setFav, setMap) => {
   const { idDrink, strCategory, strAlcoholic, strDrink, strDrinkThumb } = recipe;
-  const newFavorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-  const favoriteIndex = newFavorites.findIndex((el) => el.id === recipe.idDrink);
+  const newFavoritesCockTail = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+  const favoriteIndex = newFavoritesCockTail.findIndex((el) => el.id === recipe.idDrink);
   if (favoriteIndex === -1) {
-    newFavorites.push({
+    newFavoritesCockTail.push({
       id: idDrink,
       type: 'bebida',
       area: '',
@@ -42,13 +42,13 @@ const saveFavoriteCocktail = (recipe, setFav, setMap) => {
       name: strDrink,
       image: strDrinkThumb,
     });
-    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
+    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoritesCockTail));
     setFav(blackHeartIcon);
   } else {
-    newFavorites.splice(favoriteIndex, 1);
-    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
+    newFavoritesCockTail.splice(favoriteIndex, 1);
+    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoritesCockTail));
     setFav(whiteHeartIcon);
-    setMap(newFavorites);
+    setMap(newFavoritesCockTail);
   }
 };
 

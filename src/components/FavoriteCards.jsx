@@ -80,7 +80,7 @@ const FavoriteCards = ({ recipe, index }) => {
   const { type } = recipe;
   if (type === 'comida') return MealCardFavorite(recipe, index);
   if (type === 'bebida') return CockTailCardFavorite(recipe, index);
-  return 'S2 codeClimate'
+  return 'S2 codeClimate';
 };
 
 export default FavoriteCards;
