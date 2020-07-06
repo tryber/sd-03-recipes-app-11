@@ -16,7 +16,7 @@
 .Fav-Card {
   display: flex;
   flex-direction: row;
-  width: 400px;
+  width: 500px;
 }
 
 .Rec-Image {
