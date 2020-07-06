@@ -40,11 +40,18 @@
   justify-content: space-around;
 }
 
+.Category {
+  align-items: stretch;
+  display: flex;
+  justify-content: center;
+}
+
 .Category button {
-  font-size: 12pt;
+  text-align: center;
+  font-size: 11pt;
   height: 50px;
   margin: 10px 5px;
-  width: 100px;
+  width: 120px;
 }
 
 .Footer {
@@ -61,7 +68,7 @@
 
 .Div {
   float: left;
-  margin: 0 2%;
+  margin: 50px;
 }
 
 .Section {

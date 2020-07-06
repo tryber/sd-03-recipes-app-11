@@ -7,6 +7,7 @@ const ShareButton = ({ local, index, id, type }) => {
   const { setLinkCopie } = useContext(ComidasContext);
   return (
     <button
+      className="Icon-Button"
       name="CopieCocktailLink"
       onClick={() => {
         if (type === 'comidas' || type === 'bebidas') {

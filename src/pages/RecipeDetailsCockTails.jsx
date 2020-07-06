@@ -45,7 +45,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } }, type }) => {
       <section>
         <h5 className="Title-List" data-testid="recipe-category">{recipe.strAlcoholic}</h5>
         {<Ingredients value={recipe} />}
-        <p data-testid="instructions">{recipe.strInstructions}</p>
+        <p className="Instruction" data-testid="instructions">{recipe.strInstructions}</p>
       </section>
       <Recomendations type="meal" />
       <div className="Progresse">

@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import ComidasContext from '../context/ComidasContext';
+import '../styles/rec-feitas-fav.css';
 
 const Allbutton = ({ localstorageAll, setlocalstorageAll }) => (
   <button
+    className="Filter-Button"
     data-testid="filter-by-all-btn"
     onClick={() => setlocalstorageAll(localstorageAll)}
   >
@@ -16,6 +18,7 @@ const FoodButton = ({ localstorageFood, setlocalstorageFood }) => {
     .filter((el) => el.type === 'comida');
   return (
     <button
+      className="Filter-Button"
       data-testid="filter-by-food-btn"
       onClick={() => setlocalstorageFood(filteredLocalFood)}
     >
@@ -29,6 +32,7 @@ const DrinksButton = ({ localstorageDrinks, setlocalstorageDrinks }) => {
     .filter((el) => el.type === 'bebida');
   return (
     <button
+      className="Filter-Button"
       data-testid="filter-by-drink-btn"
       onClick={() => setlocalstorageDrinks(filteredLocalDrinks)}
     >
