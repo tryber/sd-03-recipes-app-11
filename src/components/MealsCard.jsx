@@ -21,7 +21,7 @@ const MealsCard = ({ recipe, index, type }) => {
               src={recipe[`str${stringsObj[type][1]}Thumb`]}
             />
           </div>
-          <h4 data-testid={`${index}-card-name`} className="Title-Cards">
+          <h4 data-testid={`${index}-card-name`}>
             {recipe[`str${stringsObj[type][1]}`]}
           </h4>
         </section>
