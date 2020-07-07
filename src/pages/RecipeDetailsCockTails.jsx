@@ -4,16 +4,23 @@ import { Link } from 'react-router-dom';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import { filterIngredientsCockTails, auxiliarFuncition } from '../services/filterIngredients';
 import ComidasContext from '../context/ComidasContext';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
 import '../styles/details.css';
 import ShowIngredients from '../components/Ingredients/ShowIngredients';
-import Ingredients from '../components/Ingredients/Ingredients';
 import Recomendations from '../components/Recomendations';
 import '../styles/details.css';
 import ShareButton from '../components/Buttons/ShareButton';
 import FavoriteButton from '../components/Buttons/FavoriteButton';
+import { mealOrCocktail } from '../components/Ingredients/IngredientsCheckBox';
+
+const aoCarregarBebidas = (id) => {
+  localStorage.removeItem('inProgressRecipes');
+  const objeto = {
+    cocktails: {},
+    meals: {},
+  };
+  objeto[mealOrCocktail][id] = [];
+  return localStorage.setItem('inProgressRecipes', JSON.stringify(objeto));
+};
 
 const RecipeDetailsCockTails = ({ match: { params: { id } }, type }) => {
   const iniciouReceita = window.location.pathname.includes(`${id}/in-progress`);
@@ -22,6 +29,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } }, type }) => {
     setRecipe,
     linkCopie,
   } = useContext(ComidasContext);
+  aoCarregarBebidas(id);
   useEffect(() => {
     lookupFullMealDetailsById(id, type)
       .then((data) => {
@@ -51,7 +59,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } }, type }) => {
       <section>
         <h5 className="Title-List" data-testid="recipe-category">{recipe.strAlcoholic}</h5>
         {ShowIngredients(recipe, iniciouReceita)}
-        <p data-testid="instructions">{recipe.strInstructions}</p>
+        <p className="Instruction" data-testid="instructions">{recipe.strInstructions}</p>
       </section>
       <Recomendations type="meal" />
       <div className="Progresse">

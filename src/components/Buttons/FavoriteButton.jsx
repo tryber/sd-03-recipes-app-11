@@ -58,12 +58,13 @@ const FavoriteButton = ({ data, type, local, index }) => {
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
     if (data.length !== 0 && favorites
-        .find((favorite) => favorite.id === data.idDrink || data.idMeal)) {
+      .find((favorite) => favorite.id === data.idDrink || data.idMeal)) {
       setFav(blackHeartIcon);
     }
   }, [data]);
   return (
     <button
+      className="Icon-Button"
       onClick={() => {
         if (type === 'meal') saveFavoriteMeal(data, setFav, setMap);
         if (type === 'cocktail') saveFavoriteCocktail(data, setFav, setMap);

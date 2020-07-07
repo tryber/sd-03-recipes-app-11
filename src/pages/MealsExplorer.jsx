@@ -6,6 +6,7 @@ import ComidasContext from '../context/ComidasContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Loading from '../components/Loading';
+import '../styles/explore.css';
 
 export default function MealsExplorer({ type }) {
   const { setMeals } = useContext(ComidasContext);
@@ -27,28 +28,28 @@ export default function MealsExplorer({ type }) {
   return link ? (
     <div>
       <Header />
-      <Link to={`${location.pathname}/ingredientes`} >
-        <button type="button" data-testid="explore-by-ingredient">
-          Por Ingredientes
+      <section className="Explore">
+        <Link to={`${location.pathname}/ingredientes`} >
+          <button className="Button-Explore" type="button" data-testid="explore-by-ingredient">
+            Por Ingredientes
         </button>
-      </Link>
-      {location.pathname.slice(10) === 'comidas' && (
-        <Link to={`${location.pathname}/area`} >
-          <button type="button" data-testid="explore-by-area">
-            Por Local de Origem
-          </button>
         </Link>
-      )}
-      <Link to={link} >
-        <button type="button" data-testid="explore-surprise">
-          Me Surpreenda!
+        {location.pathname.slice(10) === 'comidas' && (
+          <Link to={`${location.pathname}/area`} >
+            <button className="Button-Explore" type="button" data-testid="explore-by-area">
+              Por Local de Origem
+          </button>
+          </Link>
+        )}
+        <Link to={link} >
+          <button className="Button-Explore" type="button" data-testid="explore-surprise">
+            Me Surpreenda!
         </button>
-      </Link>
+        </Link>
+      </section>
       <Footer />
     </div>
-  ) : (
-    <Loading />
-  );
+  ) : <Loading />;
 }
 
 MealsExplorer.propTypes = {

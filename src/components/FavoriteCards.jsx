@@ -4,6 +4,7 @@ import ShareButtoon from '../components/Buttons/ShareButton';
 import FavoriteButton from '../components/Buttons/FavoriteButton';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import ComidasContext from '../context/ComidasContext';
+import '../styles/rec-feitas-fav.css';
 
 const MealCardFavorite = (recipe, index) => {
   const [testRicepe, setRecipeTest] = useState({});
@@ -16,32 +17,37 @@ const MealCardFavorite = (recipe, index) => {
       });
   }, []);
   return (
-    <div>
-      <Link to={`/comidas/${id}`}>
-        <img
-          height="50"
-          width="50"
-          src={image}
-          alt="recipe"
-          data-testid={`${index}-horizontal-image`}
-        />
-      </Link>
-      <p data-testid={`${index}-horizontal-top-text`}>
-        {`${area} - ${category}`}
-      </p>
-      <Link to={`/comidas/${id}`}>
-        <h3 data-testid={`${index}-horizontal-name`}>
-          {name}
-        </h3>
-      </Link>
-      <ShareButtoon local index={index} type="comidas" id={id} />
-      {testRicepe.idMeal && <FavoriteButton
-        data={testRicepe}
-        type="meal"
-        local
-        index={index}
-      />}
-      {linkCopie ? <span>Link copiado!</span> : null}
+    <div className="Fav">
+      <div className="Fav-Card">
+        <Link to={`/comidas/${id}`}>
+          <img
+            className="Rec-Image"
+            src={image}
+            alt="recipe"
+            data-testid={`${index}-horizontal-image`}
+          />
+        </Link>
+        <div className="Infos">
+          <p className="Fav-Title" data-testid={`${index}-horizontal-top-text`}>
+            {`${area} - ${category}`}
+          </p>
+          <Link to={`/comidas/${id}`}>
+            <h3 className="Rec-Name" data-testid={`${index}-horizontal-name`}>
+              {name}
+            </h3>
+          </Link>
+          <div className="Icon-Div">
+            <ShareButtoon local index={index} type="comidas" id={id} />
+            {testRicepe.idMeal && <FavoriteButton
+              data={testRicepe}
+              type="meal"
+              local
+              index={index}
+            />}
+            {linkCopie ? <span>Link copiado!</span> : null}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
@@ -56,31 +62,36 @@ const CockTailCardFavorite = (recipe, index) => {
       });
   }, []);
   return (
-    <div>
-      <Link to={`/bebidas/${id}`}>
-        <img
-          data-testid={`${index}-horizontal-image`}
-          width="50"
-          height="50"
-          src={image}
-          alt="recipe"
-        />
-      </Link>
-      <p data-testid={`${index}-horizontal-top-text`}>
-        {alcoholicOrNot}
-      </p>
-      <Link to={`/bebidas/${id}`}>
-        <h3 data-testid={`${index}-horizontal-name`}>
-          {name}
-        </h3>
-      </Link>
-      <ShareButtoon local index={index} type="bebidas" id={id} />
-      {testRicepeCock.idDrink && <FavoriteButton
-        data={testRicepeCock}
-        type="cocktail"
-        local
-        index={index}
-      />}
+    <div className="Fav">
+      <div className="Fav-Card">
+        <Link to={`/bebidas/${id}`}>
+          <img
+            className="Rec-Image"
+            data-testid={`${index}-horizontal-image`}
+            src={image}
+            alt="recipe"
+          />
+        </Link>
+        <div className="Infos">
+          <p className="Fav-Title" data-testid={`${index}-horizontal-top-text`}>
+            {alcoholicOrNot}
+          </p>
+          <Link to={`/bebidas/${id}`}>
+            <h3 className="Rec-Name" data-testid={`${index}-horizontal-name`}>
+              {name}
+            </h3>
+          </Link>
+          <div className="Icon-Div">
+            <ShareButtoon local index={index} type="bebidas" id={id} />
+            {testRicepeCock.idDrink && <FavoriteButton
+              data={testRicepeCock}
+              type="cocktail"
+              local
+              index={index}
+            />}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

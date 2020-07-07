@@ -3,6 +3,23 @@
   .Container {
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.5);
   }
+
+  .Category {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .Div {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+  }
+
+  .Cards {
+    max-width: 100px;
+    padding: 5px;
+  }
 }
 
 .Header {
@@ -40,11 +57,16 @@
   justify-content: space-around;
 }
 
+.Category {
+  display: flex;
+  justify-content: center;
+}
+
 .Category button {
-  font-size: 12pt;
+  font-size: 11pt;
   height: 50px;
   margin: 10px 5px;
-  width: 100px;
+  width: 120px;
 }
 
 .Footer {
@@ -59,9 +81,14 @@
   width: 100%;
 }
 
+.Map {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .Div {
-  float: left;
-  margin: 0 2%;
+  margin: 20px;
 }
 
 .Section {
@@ -80,11 +107,11 @@
 
 .Cards {
   margin: 10px;
-  max-width: 200px;
   padding: 10px;
+  width: 200px;
 }
 
-.Title-Cards {
+a {
   color: black;
   font-size: 15pt;
   text-decoration: none;

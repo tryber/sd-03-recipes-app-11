@@ -5,27 +5,22 @@ import { Link } from 'react-router-dom';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import ComidasContext from '../context/ComidasContext';
 import { filterIngredientsMeals, auxiliarFuncition } from '../services/filterIngredients';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Recomendations from '../components/Recomendations';
 import '../styles/details.css';
 import ShowIngredients from '../components/Ingredients/ShowIngredients';
-import { mealOrCocktail, localObject } from '../components/Ingredients/IngredientsCheckBox';
-import Ingredients from '../components/Ingredients/Ingredients';
+import { mealOrCocktail } from '../components/Ingredients/IngredientsCheckBox';
 import '../styles/details.css';
 import ShareButton from '../components/Buttons/ShareButton';
 import FavoriteButton from '../components/Buttons/FavoriteButton';
 
 const aoCarregar = (id) => {
-  if (!localObject) {
-    const objeto = {
-      cocktails: {},
-      meals: {},
-    };
-    objeto[mealOrCocktail][id] = [];
-    localStorage.setItem('inProgressRecipes', JSON.stringify(objeto));
-  }
+  localStorage.removeItem('inProgressRecipes');
+  const objeto = {
+    cocktails: {},
+    meals: {},
+  };
+  objeto[mealOrCocktail][id] = [];
+  return localStorage.setItem('inProgressRecipes', JSON.stringify(objeto));
 };
 
 

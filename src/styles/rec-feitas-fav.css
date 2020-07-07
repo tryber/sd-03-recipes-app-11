@@ -1,0 +1,74 @@
+.Filter-Button {
+  font-size: 12pt;
+  height: 50px;
+  margin: 10px 5px;
+  width: 120px;
+}
+
+.Fav {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+}
+
+.Fav-Card {
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+}
+
+.Rec-Image {
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column-reverse;
+  height: 300px;
+  justify-content: center;
+  margin: 0 20px 20px;
+  padding: 10px;
+  width: 250px;
+}
+
+.Infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+
+.Fav-Title {
+  font-size: 16pt;
+}
+
+.Rec-Name {
+  color: black;
+  font-size: 14pt;
+  text-decoration: none;
+}
+
+.Icon-Button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  width: 50px;
+}
+
+.Icon-Button:focus {
+  background-color: white;
+  border: none;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  outline: none;
+  width: 50px;
+}
+
+.Icon-Div {
+  display: flex;
+  justify-content: center;
+}
