@@ -53,6 +53,12 @@ const InProgressRoutes = () => (
     <Route
       exact
       path="/bebidas/:id/in-progress"
+      render={(props) => <RecipeDetailsCockTails {...props} type="cocktail" />}
+    />
+    <Route
+      exact
+      path="/comidas/:id/in-progress"
+      render={(props) => <RecipeDetailsMeals {...props} type="meal" />}
     />
   </Switch>
 );
