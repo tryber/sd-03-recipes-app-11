@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ComidasContext from './ComidasContext';
+import { svRecipes } from '../services/data';
 
 function ComidasProvider({ children }) {
   const favoriteMap = JSON.parse(localStorage.getItem('favoriteRecipes'));
@@ -13,6 +14,8 @@ function ComidasProvider({ children }) {
   const [recomendations, setRecomendations] = useState([]);
   const [linkCopie, setLinkCopie] = useState(false);
   const [mapDefine, setMap] = useState(favoriteMap);
+
+  const saveRecipes = (data) => setRecipe(svRecipes(data, setRecipe).slice(0, 12));
 
   const store = {
     searchValue: search,
@@ -33,13 +36,10 @@ function ComidasProvider({ children }) {
     setLinkCopie,
     mapDefine,
     setMap,
+    saveRecipes,
   };
 
-  return (
-    <ComidasContext.Provider value={store}>
-      {children}
-    </ComidasContext.Provider>
-  );
+  return <ComidasContext.Provider value={store}>{children}</ComidasContext.Provider>;
 }
 
 ComidasProvider.propTypes = {
