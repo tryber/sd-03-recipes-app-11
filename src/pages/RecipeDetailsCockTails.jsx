@@ -10,16 +10,18 @@ import Recomendations from '../components/Recomendations';
 import '../styles/details.css';
 import ShareButton from '../components/Buttons/ShareButton';
 import FavoriteButton from '../components/Buttons/FavoriteButton';
-import { mealOrCocktail } from '../components/Ingredients/IngredientsCheckBox';
+import { mealOrCocktail, localObject } from '../components/Ingredients/IngredientsCheckBox';
 
 const aoCarregarBebidas = (id) => {
-  localStorage.removeItem('inProgressRecipes');
-  const objeto = {
-    cocktails: {},
-    meals: {},
-  };
-  objeto[mealOrCocktail][id] = [];
-  return localStorage.setItem('inProgressRecipes', JSON.stringify(objeto));
+  if (!localObject) {
+    const objeto = {
+      cocktails: {},
+      meals: {},
+    };
+    objeto[mealOrCocktail][id] = [];
+    return localStorage.setItem('inProgressRecipes', JSON.stringify(objeto));
+  }
+  return '';
 };
 
 const RecipeDetailsCockTails = ({ match: { params: { id } }, type }) => {

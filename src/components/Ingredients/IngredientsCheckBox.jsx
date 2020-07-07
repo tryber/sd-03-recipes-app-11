@@ -26,21 +26,11 @@ const editStorage = (recipeId, id) => {
 
 function IngredientsCheckBox({ el, id, recipeId }) {
   const objeto = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  // useEffect(() => {
-  //   if (!objeto) {
-  //     const objeto = {
-  //       cocktails: {},
-  //       meals: {}
-  //     };
-  //     objeto[mealOrCocktail][recipeId] = [0];
-  //     localStorage.setItem('inProgressRecipes', JSON.stringify(objeto));
-  //   }
-  // }, []);
 
   const [checked] = useState(objeto[mealOrCocktail][recipeId].includes(id));
 
   return (
-    <div>
+    <div data-testid={`${id}-ingredient-step`}>
       <label
         htmlFor="options"
         className={checked ? 'selected' : 'notSelected'}
@@ -48,7 +38,6 @@ function IngredientsCheckBox({ el, id, recipeId }) {
         <input
           onClick={() => editStorage(recipeId, id)}
           checked={checked}
-          data-testid={`${id}-ingredient-step`}
           type="checkbox"
           key={el[0]}
           id="options"
