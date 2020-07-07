@@ -12,19 +12,12 @@ import MealsExplorerByIngredients from './pages/MealsExplorerByIngredients';
 import MealsExplorerByArea from './pages/MealsExplorerByArea';
 import FavoriteRecipesPage from './pages/FavoriteRecipesPage';
 import DoneRecipes from './pages/DoneRecipes';
+import NotFound from './pages/NotFound';
 
 const MealsRoutes = () => (
   <Switch>
-    <Route
-      exact
-      path="/comidas"
-      render={(props) => <Meals {...props} type="meal" />}
-    />
-    <Route
-      exact
-      path="/bebidas"
-      render={(props) => <Meals {...props} type="cocktail" />}
-    />
+    <Route exact path="/comidas" render={(props) => <Meals {...props} type="meal" />} />
+    <Route exact path="/bebidas" render={(props) => <Meals {...props} type="cocktail" />} />
   </Switch>
 );
 
@@ -89,12 +82,12 @@ const MealsExplorerByIngredientsRoutes = () => (
     <Route
       exact
       path="/explorar/comidas/ingredientes"
-      render={(props) => <MealsExplorerByIngredients {...props} type="meal" />}
+      render={(props) => <MealsExplorerByIngredients {...props} type="meal" url="comidas" />}
     />
     <Route
       exact
       path="/explorar/bebidas/ingredientes"
-      render={(props) => <MealsExplorerByIngredients {...props} type="cocktail" />}
+      render={(props) => <MealsExplorerByIngredients {...props} type="cocktail" url="bebidas" />}
     />
   </Switch>
 );
@@ -106,41 +99,26 @@ const MealsExplorerByAreaRoutes = () => (
       path="/explorar/comidas/area"
       render={(props) => <MealsExplorerByArea {...props} type="meal" />}
     />
+    <Route exact path="/explorar/bebidas/area" component={NotFound} />
   </Switch>
 );
 
 const PerfilRoutes = () => (
   <Switch>
-    <Route
-      exact
-      path="/perfil"
-      component={Perfil}
-    />
+    <Route exact path="/perfil" component={Perfil} />
   </Switch>
 );
 
 const DoneRecipesRoutes = () => (
   <Switch>
-    <Route
-      exact
-      path="/receitas-feitas"
-      component={DoneRecipes}
-    />
-    <Route
-      exact
-      path="/receitas-favoritas"
-      component={FavoriteRecipesPage}
-    />
+    <Route exact path="/receitas-feitas" component={DoneRecipes} />
+    <Route exact path="/receitas-favoritas" component={FavoriteRecipesPage} />
   </Switch>
 );
 
 const LoginRoutes = () => (
   <Switch>
-    <Route
-      exact
-      path="/"
-      component={Login}
-    />
+    <Route exact path="/" component={Login} />
   </Switch>
 );
 
