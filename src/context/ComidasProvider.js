@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ComidasContext from './ComidasContext';
 
-
 function ComidasProvider({ children }) {
+  const favoriteMap = JSON.parse(localStorage.getItem('favoriteRecipes'));
   const [search, setSearch] = useState(false);
   const [searchType, setSearchType] = useState({ type: '', meal: '', radio: '' });
   const [meals, setMeals] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
   const [recipe, setRecipe] = useState({});
-  const [fetchRecipe, setFetchRecipe] = useState(false);
   const [categories, setCategories] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
   const [linkCopie, setLinkCopie] = useState(false);
+  const [mapDefine, setMap] = useState(favoriteMap);
 
   const store = {
     searchValue: search,
@@ -25,14 +25,14 @@ function ComidasProvider({ children }) {
     setIsFetching,
     recipe,
     setRecipe,
-    fetchRecipe,
-    setFetchRecipe,
     categories,
     setCategories,
     recomendations,
     setRecomendations,
     linkCopie,
     setLinkCopie,
+    mapDefine,
+    setMap,
   };
 
   return (

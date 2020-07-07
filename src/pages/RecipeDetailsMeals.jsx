@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
-import Clipboard from 'react-clipboard.js';
 import { Link } from 'react-router-dom';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import ComidasContext from '../context/ComidasContext';
@@ -13,7 +12,10 @@ import Recomendations from '../components/Recomendations';
 import '../styles/details.css';
 import ShowIngredients from '../components/Ingredients/ShowIngredients';
 import { mealOrCocktail, localObject } from '../components/Ingredients/IngredientsCheckBox';
-
+import Ingredients from '../components/Ingredients/Ingredients';
+import '../styles/details.css';
+import ShareButton from '../components/Buttons/ShareButton';
+import FavoriteButton from '../components/Buttons/FavoriteButton';
 
 const aoCarregar = (id) => {
   if (!localObject) {
@@ -26,15 +28,13 @@ const aoCarregar = (id) => {
   }
 };
 
+
 const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   const iniciouReceita = window.location.pathname.includes(`${id}/in-progress`);
   const {
     recipe,
     setRecipe,
-    fetchRecipe,
-    setFetchRecipe,
     linkCopie,
-    setLinkCopie,
   } = useContext(ComidasContext);
 
   aoCarregar(id);
@@ -57,28 +57,9 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       <div className="Description">
         <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
         <div>
-          <Clipboard
-            name="CopieMealLink"
-            data-testid="share-btn"
-            onClick={() => {
-              navigator.clipboard.writeText(window.location.href);
-              setLinkCopie(true);
-            }}
-          >
-            <img
-              src={shareIcon}
-              alt="share button"
-            />
-          </Clipboard>
-          <button
-            name="favorite2"
-            onClick={() => setFetchRecipe(!fetchRecipe)}
-          >
-            {fetchRecipe
-              ? <img data-testid="favorite-btn" src={blackHeartIcon} alt="favButton" />
-              : <img data-testid="favorite-btn" src={whiteHeartIcon} alt="favButton" />}
-          </button>
+          <ShareButton />
           {linkCopie && <span>Link copiado!</span>}
+          <FavoriteButton data={recipe} type="meal" />
         </div>
       </div>
       <section>
