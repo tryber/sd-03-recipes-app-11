@@ -8,7 +8,7 @@
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.5);
     width: 100%;
   }
-  
+
   .Description {
     align-items: center;
     display: flex;
@@ -19,9 +19,9 @@
 
   .Instruction {
     background-color: #c4c4c4;
+    max-width: 300px;
     padding: 10px 5px;
     text-align: justify;
-    max-width: 300px;
   }
 
   .Video {
