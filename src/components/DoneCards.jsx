@@ -81,7 +81,7 @@ const DoneCards = ({ recipe, index }) => {
   const { type } = recipe;
   if (type === 'comida') return MealCardDone(recipe, index);
   if (type === 'bebida') return CockTailCardDone(recipe, index);
-  return 'S2 codeClimate';
+  return 'S2 codeClimate1';
 };
 
 export default DoneCards;
