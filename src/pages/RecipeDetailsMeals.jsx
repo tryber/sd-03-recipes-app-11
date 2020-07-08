@@ -53,7 +53,7 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       <div className="Description">
         <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
         <div>
-          <ShareButton type="comidas" id={id}/>
+          <ShareButton type="comidas" id={id} />
           {linkCopie && <span>Link copiado!</span>}
           <FavoriteButton data={recipe} type="meal" />
         </div>
@@ -70,9 +70,9 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       </div>
       <Recomendations type="cocktail" />
       <div className="Progresse">
-      {iniciouReceita
-        ? <InProgressButton data={recipe.ingredients} id={id}/>
-        : <DetailsButton type="comidas" id={id} />}
+        {iniciouReceita
+          ? <InProgressButton data={recipe.ingredients} id={id} />
+          : <DetailsButton type="comidas" id={id} />}
       </div>
     </div>
   );

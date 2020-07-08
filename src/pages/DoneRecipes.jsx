@@ -9,7 +9,7 @@ const DoneRecipes = () => {
   return (
     <div>
       <Header />
-      {mapDones && <FavoriteFilters local/>}
+      {mapDones && <FavoriteFilters local />}
       {mapDones && mapDones.map((el, i) => <DoneCards key={el.id} recipe={el} index={i} />)}
     </div>
   );

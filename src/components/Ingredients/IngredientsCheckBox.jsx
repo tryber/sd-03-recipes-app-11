@@ -26,7 +26,7 @@ const editStorage = (recipeId, id) => {
 
 function IngredientsCheckBox({ el, id, recipeId }) {
   const objeto = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  
+
   const [checked] = useState(objeto[mealOrCocktail][recipeId].includes(id));
 
   return (

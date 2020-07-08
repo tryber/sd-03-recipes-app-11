@@ -64,6 +64,14 @@ const FavoriteFilters = ({ local }) => {
   );
 };
 
+FavoriteFilters.defaultProps = {
+  local: false
+};
+
+FavoriteFilters.propTypes = {
+  local: PropTypes.bool
+};
+
 Allbutton.propTypes = {
   localstorageAll: PropTypes.arrayOf.isRequired,
   setlocalstorageAll: PropTypes.func.isRequired,

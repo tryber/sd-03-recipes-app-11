@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import { filterIngredientsCockTails, auxiliarFuncition } from '../services/filterIngredients';
 import ComidasContext from '../context/ComidasContext';
@@ -54,7 +53,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } }, type }) => {
       <div className="Description">
         <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
         <div>
-          <ShareButton type="bebidas" id={id}/>
+          <ShareButton type="bebidas" id={id} />
           {linkCopie && <span>Link copiado!</span>}
           <FavoriteButton data={recipe} type="cocktail" />
         </div>
@@ -66,9 +65,9 @@ const RecipeDetailsCockTails = ({ match: { params: { id } }, type }) => {
       </section>
       <Recomendations type="meal" />
       <div className="Progresse">
-      {iniciouReceita
-        ? <InProgressButton />
-        : <DetailsButton type="bebidas" id={id} />}
+        {iniciouReceita
+          ? <InProgressButton />
+          : <DetailsButton type="bebidas" id={id} />}
       </div>
     </section>
   );

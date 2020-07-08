@@ -12,14 +12,14 @@ const MealCardDone = (recipe, index) => {
       <div className="Fav-Card">
         <Link to={`/comidas/${id}`}>
           <img
+            data-testid={`${index}-horizontal-image`}
             className="Rec-Image"
             src={image}
             alt="recipe"
-            data-testid={`${index}-horizontal-image`}
           />
         </Link>
         <div className="Infos">
-          <p className="Fav-Title" data-testid={`${index}-horizontal-top-text`}>
+          <p data-testid={`${index}-horizontal-top-text`} className="Fav-Title">
             {`${area} - ${category}`}
           </p>
           <Link to={`/comidas/${id}`}>
@@ -50,8 +50,8 @@ const CockTailCardDone = (recipe, index) => {
       <div className="Fav-Card">
         <Link to={`/bebidas/${id}`}>
           <img
-            className="Rec-Image"
             data-testid={`${index}-horizontal-image`}
+            className="Rec-Image"
             src={image}
             alt="recipe"
           />
