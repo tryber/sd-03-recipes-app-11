@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Ingredients({ value: { ingredients } }) {
-  // console.log(value.ingredients)
   return ingredients === undefined ? <div>looding...</div> : <div className="Ingredientes">
     {ingredients.map((el, index) => (
       <p

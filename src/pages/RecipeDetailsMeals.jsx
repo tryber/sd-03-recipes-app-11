@@ -5,18 +5,36 @@ import { Link } from 'react-router-dom';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import ComidasContext from '../context/ComidasContext';
 import { filterIngredientsMeals, auxiliarFuncition } from '../services/filterIngredients';
-import Ingredients from '../components/Ingredients';
 import Recomendations from '../components/Recomendations';
+import '../styles/details.css';
+import ShowIngredients from '../components/Ingredients/ShowIngredients';
+import { mealOrCocktail, localObject } from '../components/Ingredients/IngredientsCheckBox';
 import '../styles/details.css';
 import ShareButton from '../components/Buttons/ShareButton';
 import FavoriteButton from '../components/Buttons/FavoriteButton';
 
+const aoCarregar = (id) => {
+  if (!localObject) {
+    const objeto = {
+      cocktails: {},
+      meals: {},
+    };
+    objeto[mealOrCocktail][id] = [];
+    return localStorage.setItem('inProgressRecipes', JSON.stringify(objeto));
+  }
+  return '';
+};
+
+
 const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
+  const iniciouReceita = window.location.pathname.includes(`${id}/in-progress`);
   const {
     recipe,
     setRecipe,
     linkCopie,
   } = useContext(ComidasContext);
+
+  aoCarregar(id);
   useEffect(() => {
     lookupFullMealDetailsById(id, type)
       .then((data) => {
@@ -43,7 +61,7 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       </div>
       <section>
         <h5 className="Title-List" data-testid="recipe-category">{recipe.strCategory}</h5>
-        {<Ingredients value={recipe} />}
+        {ShowIngredients(recipe, iniciouReceita)}
         <p className="Instruction" data-testid="instructions">{recipe.strInstructions}</p>
       </section>
       <div className="Video">
@@ -57,11 +75,11 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
           to={`/comidas/${id}/in-progress`}
         >
           <button
-            data-testid="start-recipe-btn"
+            data-testid={`${iniciouReceita ? 'finish-recipe-btn' : 'start-recipe-btn'}`}
             className="Button-Progresse"
           >
-            Inciar Receita
-        </button>
+            {iniciouReceita ? 'Finalizar Receita' : 'Iniciar Receita'}
+          </button>
         </Link>
       </div>
     </div>
