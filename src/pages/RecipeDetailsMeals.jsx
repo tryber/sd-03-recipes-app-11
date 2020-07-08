@@ -1,17 +1,17 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
-import { Link } from 'react-router-dom';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import ComidasContext from '../context/ComidasContext';
 import { filterIngredientsMeals, auxiliarFuncition } from '../services/filterIngredients';
 import Recomendations from '../components/Recomendations';
-import '../styles/details.css';
 import ShowIngredients from '../components/Ingredients/ShowIngredients';
 import { mealOrCocktail, localObject } from '../components/Ingredients/IngredientsCheckBox';
-import '../styles/details.css';
 import ShareButton from '../components/Buttons/ShareButton';
 import FavoriteButton from '../components/Buttons/FavoriteButton';
+import DetailsButton from '../components/Buttons/DatailsButton';
+import InProgressButton from '../components/Buttons/InProgressButton';
+import '../styles/details.css';
 
 const aoCarregar = (id) => {
   if (!localObject) {
@@ -24,7 +24,6 @@ const aoCarregar = (id) => {
   }
   return '';
 };
-
 
 const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
   const iniciouReceita = window.location.pathname.includes(`${id}/in-progress`);
@@ -54,7 +53,7 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       <div className="Description">
         <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
         <div>
-          <ShareButton />
+          <ShareButton type="comidas" id={id}/>
           {linkCopie && <span>Link copiado!</span>}
           <FavoriteButton data={recipe} type="meal" />
         </div>
@@ -71,16 +70,9 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       </div>
       <Recomendations type="cocktail" />
       <div className="Progresse">
-        <Link
-          to={`/comidas/${id}/in-progress`}
-        >
-          <button
-            data-testid={`${iniciouReceita ? 'finish-recipe-btn' : 'start-recipe-btn'}`}
-            className="Button-Progresse"
-          >
-            {iniciouReceita ? 'Finalizar Receita' : 'Iniciar Receita'}
-          </button>
-        </Link>
+      {iniciouReceita
+        ? <InProgressButton data={recipe.ingredients} id={id}/>
+        : <DetailsButton type="comidas" id={id} />}
       </div>
     </div>
   );
