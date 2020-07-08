@@ -65,11 +65,11 @@ const FavoriteFilters = ({ local }) => {
 };
 
 FavoriteFilters.defaultProps = {
-  local: false
+  local: false,
 };
 
 FavoriteFilters.propTypes = {
-  local: PropTypes.bool
+  local: PropTypes.bool,
 };
 
 Allbutton.propTypes = {
