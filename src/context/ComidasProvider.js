@@ -5,6 +5,7 @@ import { svRecipes } from '../services/data';
 
 function ComidasProvider({ children }) {
   const favoriteMap = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
   const [search, setSearch] = useState(false);
   const [searchType, setSearchType] = useState({ type: '', meal: '', radio: '' });
   const [meals, setMeals] = useState([]);
@@ -14,6 +15,7 @@ function ComidasProvider({ children }) {
   const [recomendations, setRecomendations] = useState([]);
   const [linkCopie, setLinkCopie] = useState(false);
   const [mapDefine, setMap] = useState(favoriteMap);
+  const [mapDones, setMapDones] = useState(doneRecipes);
 
   const saveRecipes = (data) => setRecipe(svRecipes(data, setRecipe).slice(0, 12));
 
@@ -36,6 +38,8 @@ function ComidasProvider({ children }) {
     setLinkCopie,
     mapDefine,
     setMap,
+    mapDones,
+    setMapDones,
     saveRecipes,
   };
 

@@ -1,16 +1,16 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { lookupFullMealDetailsById } from '../services/requestMealApi';
 import { filterIngredientsCockTails, auxiliarFuncition } from '../services/filterIngredients';
 import ComidasContext from '../context/ComidasContext';
-import '../styles/details.css';
 import ShowIngredients from '../components/Ingredients/ShowIngredients';
 import Recomendations from '../components/Recomendations';
-import '../styles/details.css';
 import ShareButton from '../components/Buttons/ShareButton';
 import FavoriteButton from '../components/Buttons/FavoriteButton';
 import { mealOrCocktail, localObject } from '../components/Ingredients/IngredientsCheckBox';
+import DetailsButton from '../components/Buttons/DatailsButton';
+import InProgressButton from '../components/Buttons/InProgressButton';
+import '../styles/details.css';
 
 const aoCarregarBebidas = (id) => {
   if (!localObject) {
@@ -53,7 +53,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } }, type }) => {
       <div className="Description">
         <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
         <div>
-          <ShareButton />
+          <ShareButton type="bebidas" id={id} />
           {linkCopie && <span>Link copiado!</span>}
           <FavoriteButton data={recipe} type="cocktail" />
         </div>
@@ -65,16 +65,9 @@ const RecipeDetailsCockTails = ({ match: { params: { id } }, type }) => {
       </section>
       <Recomendations type="meal" />
       <div className="Progresse">
-        <Link
-          to={`/bebidas/${id}/in-progress`}
-        >
-          <button
-            data-testid={`${iniciouReceita ? 'finish-recipe-btn' : 'start-recipe-btn'}`}
-            className="Button-Progresse"
-          >
-            {iniciouReceita ? 'Finalizar Receita' : 'Iniciar Receita'}
-          </button>
-        </Link>
+        {iniciouReceita
+          ? <InProgressButton />
+          : <DetailsButton type="bebidas" id={id} />}
       </div>
     </section>
   );

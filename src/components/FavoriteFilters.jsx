@@ -41,16 +41,35 @@ const DrinksButton = ({ localstorageDrinks, setlocalstorageDrinks }) => {
   );
 };
 
-const FavoriteFilters = () => {
-  const { setMap } = useContext(ComidasContext);
-  const mainStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
+const FavoriteFilters = ({ local }) => {
+  const { setMap, setMapDones } = useContext(ComidasContext);
+  const mainStorage = local
+    ? JSON.parse(localStorage.getItem('doneRecipes'))
+    : JSON.parse(localStorage.getItem('favoriteRecipes'));
   return (
     <div>
-      <Allbutton localstorageAll={mainStorage} setlocalstorageAll={setMap} />
-      <FoodButton localstorageFood={mainStorage} setlocalstorageFood={setMap} />
-      <DrinksButton localstorageDrinks={mainStorage} setlocalstorageDrinks={setMap} />
+      <Allbutton
+        localstorageAll={mainStorage}
+        setlocalstorageAll={local ? setMapDones : setMap}
+      />
+      <FoodButton
+        localstorageFood={mainStorage}
+        setlocalstorageFood={local ? setMapDones : setMap}
+      />
+      <DrinksButton
+        localstorageDrinks={mainStorage}
+        setlocalstorageDrinks={local ? setMapDones : setMap}
+      />
     </div>
   );
+};
+
+FavoriteFilters.defaultProps = {
+  local: false,
+};
+
+FavoriteFilters.propTypes = {
+  local: PropTypes.bool,
 };
 
 Allbutton.propTypes = {

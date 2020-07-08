@@ -36,7 +36,7 @@ function IngredientsCheckBox({ el, id, recipeId }) {
         className={checked ? 'selected' : 'notSelected'}
       >
         <input
-          onClick={() => editStorage(recipeId, id)}
+          onChange={() => editStorage(recipeId, id)}
           checked={checked}
           type="checkbox"
           key={el[0]}
@@ -51,7 +51,7 @@ function IngredientsCheckBox({ el, id, recipeId }) {
 IngredientsCheckBox.propTypes = {
   el: PropTypes.arrayOf(PropTypes.string).isRequired,
   id: PropTypes.number.isRequired,
-  recipeId: PropTypes.number.isRequired,
+  recipeId: PropTypes.string.isRequired,
 };
 
 export default IngredientsCheckBox;
