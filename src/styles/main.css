@@ -24,7 +24,7 @@
 
 .Header {
   align-items: center;
-  background-color: #c4c4c4;
+  background-color: #588582;
   display: flex;
   font-size: 16pt;
   justify-content: space-around;
@@ -32,14 +32,14 @@
 }
 
 .Icon {
-  background-color: #c4c4c4;
+  background-color: #588582;
   border: none;
   cursor: pointer;
   padding: 0 15px;
 }
 
 .Icon:focus {
-  background-color: #c4c4c4;
+  background-color: #588582;
   border: none;
   outline: none;
   padding: 0 15px;
@@ -63,6 +63,10 @@
 }
 
 .Category button {
+  background-color: #588582;
+  border-color: #588582;
+  border-radius: 10%;
+  color: black;
   font-size: 11pt;
   height: 50px;
   margin: 10px 5px;
@@ -71,7 +75,7 @@
 
 .Footer {
   align-items: center;
-  background-color: #c4c4c4;
+  background-color: #588582;
   bottom: 0;
   display: flex;
   justify-content: space-around;
