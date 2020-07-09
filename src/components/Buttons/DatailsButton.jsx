@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const DetailsButton = ({ type, id }) => {
+const detailsButtonVisible = (type, id) => {
   const StartOrNot = JSON.parse(localStorage.getItem('inProgressRecipes')) || [];
   const { cocktails, meals } = StartOrNot;
   let defineButton = [];
@@ -22,7 +22,17 @@ const DetailsButton = ({ type, id }) => {
   );
 };
 
+const DetailsButton = ({ test, type, id }) => {
+  if (test === null) return detailsButtonVisible(type, id);
+  return <div />;
+};
+
+DetailsButton.defaultProps = {
+  test: null,
+};
+
 DetailsButton.propTypes = {
+  test: PropTypes.arrayOf(),
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
 };

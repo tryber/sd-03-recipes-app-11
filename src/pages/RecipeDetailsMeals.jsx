@@ -31,6 +31,7 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
     recipe,
     setRecipe,
     linkCopie,
+    mapDones,
   } = useContext(ComidasContext);
 
   aoCarregar(id);
@@ -72,7 +73,7 @@ const RecipeDetailsMeals = ({ type, match: { params: { id } } }) => {
       <div className="Progresse">
         {iniciouReceita
           ? <InProgressButton data={recipe.ingredients} id={id} />
-          : <DetailsButton type="comidas" id={id} />}
+          : <DetailsButton test={mapDones} type="comidas" id={id} />}
       </div>
     </div>
   );

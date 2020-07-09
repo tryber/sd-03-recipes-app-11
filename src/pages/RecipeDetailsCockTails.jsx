@@ -30,6 +30,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } }, type }) => {
     recipe,
     setRecipe,
     linkCopie,
+    mapDones,
   } = useContext(ComidasContext);
   aoCarregarBebidas(id);
   useEffect(() => {
@@ -67,7 +68,7 @@ const RecipeDetailsCockTails = ({ match: { params: { id } }, type }) => {
       <div className="Progresse">
         {iniciouReceita
           ? <InProgressButton />
-          : <DetailsButton type="bebidas" id={id} />}
+          : <DetailsButton test={mapDones} type="bebidas" id={id} />}
       </div>
     </section>
   );
