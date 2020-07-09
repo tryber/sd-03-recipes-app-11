@@ -24,11 +24,11 @@ const detailsButtonVisible = (type, id) => {
 
 const DetailsButton = ({ test, type, id }) => {
   if (test === null) return detailsButtonVisible(type, id);
-  return <div />
-}
+  return <div />;
+};
 
 DetailsButton.defaultProps = {
-  test: null
+  test: null,
 };
 
 DetailsButton.propTypes = {
