@@ -13,12 +13,12 @@ export default function MealsExplorerByArea() {
     searchAllAreas().then((data) => setAreas(data.meals));
   }, []);
   useEffect(() => {
-    if (actArea !== 'All') searchMealByArea(actArea)
-      .then((data) => {
-        setAllRecipesArea(data.meals.slice(0, 12))
-      })
-    if (actArea === 'All')searchMealsByName('', 'meal')
-      .then((data) => setAllRecipesArea(data.meals.slice(0, 12)));
+    if (actArea !== 'All') {
+      searchMealByArea(actArea).then((data) => setAllRecipesArea(data.meals.slice(0, 12)));
+    }  
+    if (actArea === 'All') {
+      searchMealsByName('', 'meal').then((data) => setAllRecipesArea(data.meals.slice(0, 12)));
+    }  
   }, [actArea]);
   return (
     <div>
@@ -41,4 +41,4 @@ export default function MealsExplorerByArea() {
       <Footer />
     </div>
   );
-};
+}

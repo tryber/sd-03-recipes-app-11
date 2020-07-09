@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const DropDownArea = ({ area, setActArea }) => (
+const DropDownArea = ({ area }) => (
   <option
     data-testid={`${area}-option`}
     value={area}
@@ -8,5 +9,9 @@ const DropDownArea = ({ area, setActArea }) => (
     {area}
   </option>
 );
+
+DropDownArea.propTypes = {
+  area: PropTypes.string.isRequired,
+};
 
 export default DropDownArea;
