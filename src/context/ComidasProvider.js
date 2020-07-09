@@ -15,7 +15,7 @@ function ComidasProvider({ children }) {
   const [recomendations, setRecomendations] = useState([]);
   const [linkCopie, setLinkCopie] = useState(false);
   const [mapDefine, setMap] = useState(favoriteMap);
-  const [mapDones, setMapDones] = useState(doneRecipes)
+  const [mapDones, setMapDones] = useState(doneRecipes);
 
   const saveRecipes = (data) => setRecipe(svRecipes(data, setRecipe).slice(0, 12));
 
